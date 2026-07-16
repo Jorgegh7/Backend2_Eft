@@ -1,0 +1,6 @@
+INSERT INTO rol (nombre) VALUES ('GERENTE');
+INSERT INTO rol (nombre) VALUES ('JEFE_TURNO');
+INSERT INTO rol (nombre) VALUES ('REPONEDOR');
+INSERT INTO rol (nombre) VALUES ('CAJERO');
+INSERT INTO rol (nombre) VALUES ('ASISTENTE');
+INSERT INTO rol (nombre) VALUES ('CLIENTE');
