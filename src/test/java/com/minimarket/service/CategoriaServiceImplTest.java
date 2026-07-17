@@ -83,10 +83,12 @@ public class CategoriaServiceImplTest {
     @Test
     public void findById_cuandoNoExiste_debeLanzarExcepcion(){
         //Arrange
+        when(categoriaRepository.findById(1L)).thenReturn(Optional.empty());
 
-        //Act
-        
-        //Assert
+        // Act & Assert
+        assertThrows(RuntimeException.class, () -> categoriaService.findById(1L));
+
+        verify(categoriaRepository).findById(1L);
     }
 
 

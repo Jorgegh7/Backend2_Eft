@@ -29,21 +29,21 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            // JWT no usa cookies de sesion, por eso se deshabilita CSRF.
-            .csrf(csrf -> csrf.disable())
+                // JWT no usa cookies de sesion, por eso se deshabilita CSRF.
+                .csrf(csrf -> csrf.disable())
 
-            // JWT trabaja sin sesiones del lado del servidor.
-            .sessionManagement(session ->
-                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            )
+                // JWT trabaja sin sesiones del lado del servidor.
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
 
-            // Manejo claro de errores:
-            // 401 cuando no hay autenticacion valida.
-            // 403 cuando el usuario esta autenticado, pero no tiene permisos.
-            .exceptionHandling(ex -> ex
-                .authenticationEntryPoint(authenticationEntryPoint())
-                .accessDeniedHandler(accessDeniedHandler())
-            )
+                // Manejo claro de errores:
+                // 401 cuando no hay autenticacion valida.
+                // 403 cuando el usuario esta autenticado, pero no tiene permisos.
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint(authenticationEntryPoint())
+                        .accessDeniedHandler(accessDeniedHandler())
+                )
 
                 .authorizeHttpRequests(auth -> auth
 
@@ -51,6 +51,14 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/public/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
+
+                        // Documentación Swagger/OpenAPI - acceso público.
+                        .requestMatchers(
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/v3/api-docs/**",
+                                "/v3/api-docs.yaml"
+                        ).permitAll()
 
                         // Usuarios: solo Gerente gestiona cuentas.
                         .requestMatchers("/api/usuarios", "/api/usuarios/**")
@@ -110,11 +118,11 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
 
-            // Filtro JWT antes del filtro estandar de autenticacion de Spring.
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                // Filtro JWT antes del filtro estandar de autenticacion de Spring.
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
 
-            // Permite usar H2 Console en navegador durante desarrollo.
-            .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
+                // Permite usar H2 Console en navegador durante desarrollo.
+                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
 
         return http.build();
     }
