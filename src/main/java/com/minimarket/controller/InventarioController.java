@@ -1,11 +1,15 @@
 package com.minimarket.controller;
 
+import com.minimarket.dto.inventario.InventarioRequestDTO;
 import com.minimarket.dto.inventario.InventarioResponseDTO;
 import com.minimarket.entity.Inventario;
+import com.minimarket.entity.Producto;
 import com.minimarket.hateoas.InventarioModelAssembler;
 import com.minimarket.service.InventarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -26,41 +30,51 @@ public class InventarioController {
         this.assembler = assembler;
     }
 
-    @Operation(summary = "Listar Productos", description = "Obtiene una lista con todos los Productos")
+    @Operation(summary = "Listar Inventarios", description = "Obtiene una lista con todos los Inventarios")
     @ApiResponse(responseCode = "200", description = "Listado obtenido de forma correcta")
     @GetMapping
     public CollectionModel<EntityModel<InventarioResponseDTO>> listarMovimientosDeInventario() {
         return assembler.toCollectionModel(inventarioService.findAll());
     }
 
+    @Operation(summary = "Obtener Inventario por ID", description = "Obtiene un Inventario por su ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Invetario obtenido de forma correcta"),
+            @ApiResponse(responseCode = "404", description = "Inventario no encontrado")
+    })
     @GetMapping("/{id}")
-    public ResponseEntity<Inventario> obtenerMovimientoPorId(@PathVariable Long id) {
-        Inventario inventario = inventarioService.findById(id);
-        return (inventario != null) ? ResponseEntity.ok(inventario) : ResponseEntity.notFound().build();
+    public EntityModel<InventarioResponseDTO> obtenerMovimientoPorId(@PathVariable Long id) {
+        return  assembler.toModel(inventarioService.findById(id));
     }
 
+    @Operation(summary = "Obtener Inventario por Producto ID", description = "Obtiene Movimientos de Inventario por Producto ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Movimientos Inventario obtenido de forma correcta"),
+            @ApiResponse(responseCode = "404", description = "Inventario no encontrado")
+    })
+    @GetMapping("/producto/{productoId}")
+    public CollectionModel<EntityModel<InventarioResponseDTO>> listarMovimientosPorProducto(@PathVariable Long productoId){
+        return assembler.toCollectionModel(inventarioService.findByProductoId(productoId));
+    }
+
+    @Operation(summary = "Registrar Movimiento Inventario", description = "Registra un nuevo Movimiento en el sistema")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Movimiento creado correctamente"),
+            @ApiResponse(responseCode = "400", description = "Datos invalidos")
+    })
     @PostMapping
-    public Inventario registrarMovimiento(@RequestBody Inventario inventario) {
-        return inventarioService.save(inventario);
+    public EntityModel<InventarioResponseDTO> registrarMovimiento(@Valid @RequestBody InventarioRequestDTO inventarioRequestDTO) {
+        return assembler.toModel(inventarioService.registrarMovimiento(inventarioRequestDTO));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Inventario> actualizarMovimiento(@PathVariable Long id, @RequestBody Inventario inventario) {
-        Inventario existente = inventarioService.findById(id);
-        if (existente != null) {
-            inventario.setId(id);
-            return ResponseEntity.ok(inventarioService.save(inventario));
-        }
-        return ResponseEntity.notFound().build();
-    }
-
+    @Operation(summary = "Eliminar Movimiento Inventario", description = "Elimina un Movimiento por su ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Movimiento eliminado correctamente"),
+            @ApiResponse(responseCode = "404", description = "Movimiento inventario no encontrado")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarMovimiento(@PathVariable Long id) {
-        Inventario inventario = inventarioService.findById(id);
-        if (inventario != null) {
-            inventarioService.deleteById(id);
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+        inventarioService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
