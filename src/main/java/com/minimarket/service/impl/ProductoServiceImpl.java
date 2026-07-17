@@ -129,7 +129,19 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public List<ProductoRequestDTO> findByCategoriaId(Long categoriaId) {
-        return productoRepository.findByCategoriaId(categoriaId);
+    public List<ProductoResponseDTO> findByCategoriaId(Long categoriaId) {
+        if(categoriaRepository.existsById(categoriaId)){
+              List<Producto> productos =  productoRepository.findByCategoriaId(categoriaId);
+              return productos.stream()
+                      .map(producto -> new ProductoResponseDTO(
+                                      producto.getId(),
+                                      producto.getNombre(),
+                                      producto.getPrecio(),
+                                      producto.getStock(),
+                                      producto.getCategoria().getId(),
+                                      producto.getCategoria().getNombre()))
+                      .toList();
+        }
+        throw new RuntimeException("Categoria no encontrada");
     }
 }
