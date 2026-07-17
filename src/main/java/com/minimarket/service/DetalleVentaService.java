@@ -1,13 +1,15 @@
 package com.minimarket.service;
 
-import com.minimarket.entity.DetalleVenta;
+import com.minimarket.dto.detalleVenta.DetalleVentaRequestDTO;
+import com.minimarket.dto.detalleVenta.DetalleVentaResponseDTO;
 
 import java.util.List;
 
 public interface DetalleVentaService {
-    List<DetalleVenta> findAll();
-    DetalleVenta findById(Long id);
-    DetalleVenta save(DetalleVenta detalleVenta);
+    List<DetalleVentaResponseDTO> findAll();
+    DetalleVentaResponseDTO findById(Long id);
+    DetalleVentaResponseDTO agregarDetalle(DetalleVentaRequestDTO request);
+    DetalleVentaResponseDTO actualizar(Long id, DetalleVentaRequestDTO request);
     void deleteById(Long id);
-    List<DetalleVenta> findByVentaId(Long ventaId);
+    List<DetalleVentaResponseDTO> findByVentaId(Long ventaId);
 }
