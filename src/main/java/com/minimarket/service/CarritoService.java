@@ -1,13 +1,15 @@
 package com.minimarket.service;
 
-import com.minimarket.entity.Carrito;
+import com.minimarket.dto.carrito.CarritoRequestDTO;
+import com.minimarket.dto.carrito.CarritoResponseDTO;
 
 import java.util.List;
 
 public interface CarritoService {
-    List<Carrito> findAll();
-    Carrito findById(Long id);
-    Carrito save(Carrito carrito);
+    List<CarritoResponseDTO> findAll();
+    CarritoResponseDTO findById(Long id);
+    CarritoResponseDTO agregarProducto(CarritoRequestDTO request);
+    CarritoResponseDTO actualizar(Long id, CarritoRequestDTO request);
     void deleteById(Long id);
-    List<Carrito> findByUsuarioId(Long usuarioId);
+    List<CarritoResponseDTO> findByUsuarioId(Long usuarioId);
 }
