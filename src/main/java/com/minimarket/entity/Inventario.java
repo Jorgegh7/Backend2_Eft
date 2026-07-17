@@ -1,6 +1,8 @@
 package com.minimarket.entity;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -21,7 +23,7 @@ public class Inventario {
     private TipoMovimiento tipoMovimiento; // Ejemplo: "Entrada" o "Salida"
 
     @Column(nullable = false)
-    private Date fechaMovimiento;
+    private LocalDateTime fechaMovimiento;
 
     // Getters y Setters
     public Long getId() {
@@ -56,11 +58,11 @@ public class Inventario {
         this.tipoMovimiento = tipoMovimiento;
     }
 
-    public Date getFechaMovimiento() {
+    public LocalDateTime getFechaMovimiento() {
         return fechaMovimiento;
     }
 
-    public void setFechaMovimiento(Date fechaMovimiento) {
+    public void setFechaMovimiento(LocalDateTime fechaMovimiento) {
         this.fechaMovimiento = fechaMovimiento;
     }
 }

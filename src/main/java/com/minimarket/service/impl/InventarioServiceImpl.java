@@ -1,5 +1,7 @@
 package com.minimarket.service.impl;
 
+import com.minimarket.dto.inventario.InventarioRequestDTO;
+import com.minimarket.dto.inventario.InventarioResponseDTO;
 import com.minimarket.entity.Inventario;
 import com.minimarket.repository.InventarioRepository;
 import com.minimarket.service.InventarioService;
@@ -11,31 +13,44 @@ import java.util.List;
 @Service
 public class InventarioServiceImpl implements InventarioService {
 
-    @Autowired
-    private InventarioRepository inventarioRepository;
+    private final InventarioRepository inventarioRepository;
+
+    public InventarioServiceImpl(InventarioRepository inventarioRepository) {
+        this.inventarioRepository = inventarioRepository;
+    }
+
 
     @Override
-    public List<Inventario> findAll() {
-        return inventarioRepository.findAll();
+    public List<InventarioResponseDTO> findAll() {
+        List<Inventario> inventarios = inventarioRepository.findAll();
+        return inventarios.stream().map(inventario -> {
+            return new InventarioResponseDTO(
+                    inventario.getId(),
+                    inventario.getProducto().getId(),
+                    inventario.getProducto().getNombre(),
+                    inventario.getCantidad(),
+                    inventario.getTipoMovimiento(),
+                    inventario.getFechaMovimiento());
+        }).toList();
     }
 
     @Override
-    public Inventario findById(Long id) {
-        return inventarioRepository.findById(id).orElse(null);
+    public InventarioResponseDTO findById(Long id) {
+        return null;
     }
 
     @Override
-    public Inventario save(Inventario inventario) {
-        return inventarioRepository.save(inventario);
+    public InventarioResponseDTO registrarMovimiento(InventarioRequestDTO inventarioRequestDTO) {
+        return null;
     }
 
     @Override
     public void deleteById(Long id) {
-        inventarioRepository.deleteById(id);
+
     }
 
     @Override
-    public List<Inventario> findByProductoId(Long productoId) {
-        return inventarioRepository.findByProductoId(productoId);
+    public List<InventarioResponseDTO> findByProductoId(Long productoId) {
+        return List.of();
     }
 }

@@ -1,13 +1,15 @@
 package com.minimarket.service;
 
+import com.minimarket.dto.inventario.InventarioRequestDTO;
+import com.minimarket.dto.inventario.InventarioResponseDTO;
 import com.minimarket.entity.Inventario;
 
 import java.util.List;
 
 public interface InventarioService {
-    List<Inventario> findAll();
-    Inventario findById(Long id);
-    Inventario save(Inventario inventario);
+    List<InventarioResponseDTO> findAll();
+    InventarioResponseDTO findById(Long id);
+    InventarioResponseDTO registrarMovimiento(InventarioRequestDTO inventarioRequestDTO);
     void deleteById(Long id);
-    List<Inventario> findByProductoId(Long productoId);
+    List<InventarioResponseDTO> findByProductoId(Long productoId);
 }
