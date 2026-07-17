@@ -68,23 +68,26 @@ public class DetalleVentaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(assembler.toModel(creado));
     }
 
+    @Operation(summary = "Actualizar DetalleVenta por ID", description = "Actualizar un DetalleVenta en el sistema por su ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "DetalleVenta actualizado correctamente"),
+            @ApiResponse(responseCode = "400", description = "Datos invalidos"),
+            @ApiResponse(responseCode = "404", description = "DetalleVenta no encontrado")
+    })
     @PutMapping("/{id}")
-    public ResponseEntity<DetalleVenta> actualizarDetalleVenta(@PathVariable Long id, @RequestBody DetalleVenta detalleVenta) {
-        DetalleVenta existente = detalleVentaService.findById(id);
-        if (existente != null) {
-            detalleVenta.setId(id);
-            return ResponseEntity.ok(detalleVentaService.save(detalleVenta));
-        }
-        return ResponseEntity.notFound().build();
+    public EntityModel<DetalleVentaResponseDTO> actualizarDetalleVenta(
+            @PathVariable Long id, @Valid @RequestBody DetalleVentaRequestDTO detalleVentaRequestDTO) {
+        return assembler.toModel(detalleVentaService.actualizar(id, detalleVentaRequestDTO));
     }
 
+    @Operation(summary = "Eliminar DetalleVenta", description = "Elimina un DetalleVenta por su ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "DetalleVenta eliminado correctamente"),
+            @ApiResponse(responseCode = "404", description = "DetalleVenta no encontrado")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarDetalleVenta(@PathVariable Long id) {
-        DetalleVenta detalleVenta = detalleVentaService.findById(id);
-        if (detalleVenta != null) {
-            detalleVentaService.deleteById(id);
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+        detalleVentaService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
