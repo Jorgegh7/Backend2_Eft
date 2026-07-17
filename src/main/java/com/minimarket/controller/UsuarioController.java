@@ -1,13 +1,18 @@
 package com.minimarket.controller;
 
+import com.minimarket.dto.usuario.UsuarioResponseDTO;
 import com.minimarket.entity.Usuario;
+import com.minimarket.hateoas.UsuarioModelAssembler;
 import com.minimarket.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,21 +21,28 @@ import java.util.Optional;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
+    private final UsuarioModelAssembler assembler;
 
-    public UsuarioController(UsuarioService usuarioService) {
+    public UsuarioController(UsuarioService usuarioService, UsuarioModelAssembler assembler) {
         this.usuarioService = usuarioService;
+        this.assembler = assembler;
     }
 
+    @Operation(summary = "Listar Usuarios", description = "Obtiene una lista con todos los Usuarios")
+    @ApiResponse(responseCode = "200", description = "Listado obtenido de forma correcta")
     @GetMapping
-    public List<Usuario> listarUsuarios() {
-        return usuarioService.findAll();
+    public CollectionModel<EntityModel<UsuarioResponseDTO>> listarUsuarios() {
+        return assembler.toCollectionModel(usuarioService.findAll());
     }
 
+    @Operation(summary = "Retorna Usuario por ID", description = "Obtiene un usuario segun su ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Usuario obtenido de forma correcta"),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
-        Optional<Usuario> usuario = usuarioService.findById(id);
-        return usuario.map(ResponseEntity::ok) // Si el usuario existe, devuelve 200 OK con el usuario
-                .orElseGet(() -> ResponseEntity.notFound().build()); // Si no, devuelve 404
+    public EntityModel<UsuarioResponseDTO> obtenerUsuarioPorId(@PathVariable Long id) {
+       return assembler.toModel(usuarioService.findById(id));
     }
 
     @PostMapping
