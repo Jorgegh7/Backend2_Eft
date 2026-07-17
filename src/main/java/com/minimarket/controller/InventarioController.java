@@ -21,8 +21,9 @@ public class InventarioController {
     private final InventarioService inventarioService;
     private final InventarioModelAssembler assembler;
 
-    public InventarioController(InventarioService inventarioService) {
+    public InventarioController(InventarioService inventarioService, InventarioModelAssembler assembler) {
         this.inventarioService = inventarioService;
+        this.assembler = assembler;
     }
 
     @Operation(summary = "Listar Productos", description = "Obtiene una lista con todos los Productos")
