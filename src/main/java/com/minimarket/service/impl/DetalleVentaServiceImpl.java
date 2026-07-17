@@ -56,12 +56,23 @@ public class DetalleVentaServiceImpl implements DetalleVentaService {
 
     @Override
     public void deleteById(Long id) {
-
+        if(detalleVentaRepository.findById(id).isEmpty()){
+            throw new RuntimeException("DetalleVenta no encontrado");
+        }
+        detalleVentaRepository.deleteById(id);
     }
 
     @Override
     public List<DetalleVentaResponseDTO> findByVentaId(Long ventaId) {
-        return List.of();
+        Venta venta = ventaRepository.findById(ventaId).orElseThrow(() -> new RuntimeException("Venta no encontrada"));
+        List<DetalleVenta> detalleVentas = detalleVentaRepository.findByVentaId(venta.getId());
+        return detalleVentas.stream().map(detalleVenta ->
+                new DetalleVentaResponseDTO(
+                        detalleVenta.getId(),
+                        detalleVenta.getProducto().getId(),
+                        detalleVenta.getProducto().getNombre(),
+                        detalleVenta.getCantidad(),
+                        detalleVenta.getPrecio())).toList();
     }
 
     @Override
