@@ -5,16 +5,13 @@ import com.minimarket.dto.categoria.CategoriaResponseDTO;
 import com.minimarket.entity.Categoria;
 import com.minimarket.repository.CategoriaRepository;
 import com.minimarket.service.CategoriaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
 
-    //@Autowired
     private CategoriaRepository categoriaRepository;
 
     public CategoriaServiceImpl(CategoriaRepository categoriaRepository) {
@@ -40,8 +37,8 @@ public class CategoriaServiceImpl implements CategoriaService {
         if(!categoriaRepository.existsByNombre(request.nombre())){
             Categoria categoria = new Categoria();
             categoria.setNombre(request.nombre());
-            categoriaRepository.save(categoria);
-            return new CategoriaResponseDTO(categoria.getId(), categoria.getNombre());
+            Categoria guardada = categoriaRepository.save(categoria);
+            return new CategoriaResponseDTO(guardada.getId(), guardada.getNombre());
         }
         throw new RuntimeException("Ya existe una categoria con el nombre: " + request.nombre());
     }
