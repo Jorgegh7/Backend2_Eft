@@ -20,8 +20,8 @@ public class InventarioModelAssembler
     @Override
     public EntityModel<InventarioResponseDTO> toModel(InventarioResponseDTO inventario) {
         return EntityModel.of(inventario,
-                linkTo(methodOn(InventarioController.class).obtenerInventarioPorId(inventario.id())).withSelfRel(),
-                linkTo(methodOn(InventarioController.class).listarInventario()).withRel("inventario"),
+                linkTo(methodOn(InventarioController.class).obtenerMovimientoPorId(inventario.id())).withSelfRel(),
+                linkTo(methodOn(InventarioController.class).listarMovimientosDeInventario()).withRel("inventario"),
                 linkTo(methodOn(InventarioController.class).eliminarMovimiento(inventario.id())).withRel("eliminar")
         );
     }
@@ -32,6 +32,6 @@ public class InventarioModelAssembler
                 .collect(Collectors.toList());
 
         return CollectionModel.of(inventariosModel,
-                linkTo(methodOn(InventarioController.class).listarInventario()).withSelfRel());
+                linkTo(methodOn(InventarioController.class).listarMovimientosDeInventario()).withSelfRel());
     }
 }

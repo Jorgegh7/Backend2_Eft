@@ -2,24 +2,23 @@ package com.minimarket.controller;
 
 import com.minimarket.dto.inventario.InventarioRequestDTO;
 import com.minimarket.dto.inventario.InventarioResponseDTO;
-import com.minimarket.entity.Inventario;
-import com.minimarket.entity.Producto;
 import com.minimarket.hateoas.InventarioModelAssembler;
 import com.minimarket.service.InventarioService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/inventario")
+@Tag(name = "Inventario", description = "Operaciones para gestionar Inventario")
 public class InventarioController {
 
     private final InventarioService inventarioService;
@@ -43,8 +42,10 @@ public class InventarioController {
             @ApiResponse(responseCode = "404", description = "Inventario no encontrado")
     })
     @GetMapping("/{id}")
-    public EntityModel<InventarioResponseDTO> obtenerMovimientoPorId(@PathVariable Long id) {
-        return  assembler.toModel(inventarioService.findById(id));
+    public EntityModel<InventarioResponseDTO> obtenerMovimientoPorId(
+            @Parameter(description = "ID Inventario", example = "1")
+            @PathVariable Long id) {
+        return assembler.toModel(inventarioService.findById(id));
     }
 
     @Operation(summary = "Obtener Inventario por Producto ID", description = "Obtiene Movimientos de Inventario por Producto ID")
@@ -53,7 +54,9 @@ public class InventarioController {
             @ApiResponse(responseCode = "404", description = "Inventario no encontrado")
     })
     @GetMapping("/producto/{productoId}")
-    public CollectionModel<EntityModel<InventarioResponseDTO>> listarMovimientosPorProducto(@PathVariable Long productoId){
+    public CollectionModel<EntityModel<InventarioResponseDTO>> listarMovimientosPorProducto(
+            @Parameter(description = "ID Producto", example = "1")
+            @PathVariable Long productoId) {
         return assembler.toCollectionModel(inventarioService.findByProductoId(productoId));
     }
 
@@ -63,8 +66,10 @@ public class InventarioController {
             @ApiResponse(responseCode = "400", description = "Datos invalidos")
     })
     @PostMapping
-    public EntityModel<InventarioResponseDTO> registrarMovimiento(@Valid @RequestBody InventarioRequestDTO inventarioRequestDTO) {
-        return assembler.toModel(inventarioService.registrarMovimiento(inventarioRequestDTO));
+    public ResponseEntity<EntityModel<InventarioResponseDTO>> registrarMovimiento(
+            @Valid @RequestBody InventarioRequestDTO inventarioRequestDTO) {
+        InventarioResponseDTO creado = inventarioService.registrarMovimiento(inventarioRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(assembler.toModel(creado));
     }
 
     @Operation(summary = "Eliminar Movimiento Inventario", description = "Elimina un Movimiento por su ID")
