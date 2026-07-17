@@ -1,5 +1,6 @@
 package com.minimarket.controller;
 
+import com.minimarket.dto.usuario.UsuarioRequestDTO;
 import com.minimarket.dto.usuario.UsuarioResponseDTO;
 import com.minimarket.entity.Usuario;
 import com.minimarket.hateoas.UsuarioModelAssembler;
@@ -8,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
@@ -45,28 +47,34 @@ public class UsuarioController {
        return assembler.toModel(usuarioService.findById(id));
     }
 
-    @PostMapping
-    public Usuario guardarUsuario(@RequestBody Usuario usuario) {
-        return usuarioService.save(usuario);
+    @Operation(summary = "Retorna Usuario por Username", description = "Obtiene un usuario segun su Username")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Usuario obtenido de forma correcta"),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
+    @GetMapping("/username/{username}")
+    public EntityModel<UsuarioResponseDTO> obtenerUsuarioPorUsername(@PathVariable String username){
+        return assembler.toModel(usuarioService.findByUsername(username));
     }
 
+    @Operation(summary = "Actualizar Usuario", description = "Actualiza un Usuario accediendo a este por su ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Usuario actualizado correctamente"),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> actualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
-        Optional<Usuario> usuarioExistente = usuarioService.findById(id);
-        if (usuarioExistente.isPresent()) {
-            usuario.setId(id);
-            return ResponseEntity.ok(usuarioService.save(usuario));
-        }
-        return ResponseEntity.notFound().build();
+    public EntityModel<UsuarioResponseDTO> actualizarUsuario(@PathVariable Long id, @Valid @RequestBody UsuarioRequestDTO usuarioRequestDTO) {
+        return assembler.toModel(usuarioService.actualizar(id, usuarioRequestDTO));
     }
 
+    @Operation(summary = "Eliminar Usuario", description = "Elimina un Usuario por su ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Usuario eliminado correctamente"),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
-        Optional<Usuario> usuario = usuarioService.findById(id);
-        if (usuario.isPresent()) { // Verifica si el usuario existe
-            usuarioService.deleteById(id); // Elimina al usuario
-            return ResponseEntity.noContent().build(); // Respuesta 204 (sin contenido)
-        }
-        return ResponseEntity.notFound().build(); // Respuesta 404 (no encontrado)
+        usuarioService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
