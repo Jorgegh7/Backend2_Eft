@@ -1,8 +1,14 @@
 package com.minimarket.controller;
 
+import com.minimarket.dto.inventario.InventarioResponseDTO;
 import com.minimarket.entity.Inventario;
+import com.minimarket.hateoas.InventarioModelAssembler;
 import com.minimarket.service.InventarioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,12 +18,18 @@ import java.util.List;
 @RequestMapping("/api/inventario")
 public class InventarioController {
 
-    @Autowired
-    private InventarioService inventarioService;
+    private final InventarioService inventarioService;
+    private final InventarioModelAssembler assembler;
 
+    public InventarioController(InventarioService inventarioService) {
+        this.inventarioService = inventarioService;
+    }
+
+    @Operation(summary = "Listar Productos", description = "Obtiene una lista con todos los Productos")
+    @ApiResponse(responseCode = "200", description = "Listado obtenido de forma correcta")
     @GetMapping
-    public List<Inventario> listarMovimientosDeInventario() {
-        return inventarioService.findAll();
+    public CollectionModel<EntityModel<InventarioResponseDTO>> listarMovimientosDeInventario() {
+        return assembler.toCollectionModel(inventarioService.findAll());
     }
 
     @GetMapping("/{id}")

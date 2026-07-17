@@ -85,7 +85,9 @@ public class InventarioServiceImpl implements InventarioService {
 
     @Override
     public void deleteById(Long id) {
-
+        Inventario inventario = inventarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Inventario no encontrado"));
+        inventarioRepository.delete(inventario);
     }
 
     @Override
