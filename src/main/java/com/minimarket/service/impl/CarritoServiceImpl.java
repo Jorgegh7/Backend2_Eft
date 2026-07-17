@@ -73,7 +73,21 @@ public class CarritoServiceImpl implements CarritoService {
 
     @Override
     public CarritoResponseDTO actualizar(Long id, CarritoRequestDTO request) {
-        return null;
+        Carrito carrito = carritoRepository.findById(id).orElseThrow(() -> new RuntimeException("Carrito no encontrado"));
+        Usuario usuario = usuarioRepository.findById(request.usuarioId()).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        Producto producto = productoRepository.findById(request.productoId()).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        carrito.setUsuario(usuario);
+        carrito.setProducto(producto);
+        carrito.setCantidad(request.cantidad());
+
+        Carrito actualizado = carritoRepository.save(carrito);
+        return new CarritoResponseDTO(
+                actualizado.getId(),
+                actualizado.getUsuario().getId(),
+                actualizado.getUsuario().getUsername(),
+                actualizado.getProducto().getId(),
+                actualizado.getProducto().getNombre(),
+                actualizado.getCantidad());
     }
 
     @Override
