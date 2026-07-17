@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,6 +50,43 @@ public class CategoriaServiceImplTest {
         assertEquals("Bebidas", resultado.get(0).nombre());
         verify(categoriaRepository).findAll();
 
+    }
+
+    @Test
+    public void findAll_sinCategorias_debeRetornarListaVacia(){
+        //Arrange
+        when(categoriaRepository.findAll()).thenReturn(List.of());
+
+        //Act
+        List<CategoriaResponseDTO> resultado = categoriaService.findAll();
+
+        // Assert
+        assertNotNull(resultado);
+        assertTrue(resultado.isEmpty());
+        verify(categoriaRepository).findAll();
+    }
+
+    @Test
+    public void findById_cuandoExiste_debeRetornarCategoria(){
+        //Arrange
+        when(categoriaRepository.findById(1L)).thenReturn(Optional.of(categoria));
+
+        //Act
+        CategoriaResponseDTO resultado = categoriaService.findById(1L);
+
+        //Assert
+        assertNotNull(resultado);
+        assertEquals("Bebidas", resultado.nombre());
+        verify(categoriaRepository).findById(1L);
+    }
+
+    @Test
+    public void findById_cuandoNoExiste_debeLanzarExcepcion(){
+        //Arrange
+
+        //Act
+        
+        //Assert
     }
 
 
