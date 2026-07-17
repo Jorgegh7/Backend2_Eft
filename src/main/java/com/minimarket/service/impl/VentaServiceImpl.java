@@ -1,36 +1,115 @@
 package com.minimarket.service.impl;
 
+import com.minimarket.dto.detalleVenta.DetalleVentaResponseDTO;
+import com.minimarket.dto.venta.DetalleVentaItemDTO;
+import com.minimarket.dto.venta.VentaRequestDTO;
+import com.minimarket.dto.venta.VentaResponseDTO;
+import com.minimarket.entity.DetalleVenta;
+import com.minimarket.entity.Producto;
+import com.minimarket.entity.Usuario;
 import com.minimarket.entity.Venta;
+import com.minimarket.repository.DetalleVentaRepository;
+import com.minimarket.repository.ProductoRepository;
+import com.minimarket.repository.UsuarioRepository;
 import com.minimarket.repository.VentaRepository;
 import com.minimarket.service.VentaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class VentaServiceImpl implements VentaService {
 
-    @Autowired
-    private VentaRepository ventaRepository;
+    private final VentaRepository ventaRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final ProductoRepository productoRepository;
+    private final DetalleVentaRepository detalleVentaRepository;
 
-    @Override
-    public List<Venta> findAll() {
-        return ventaRepository.findAll();
+    public VentaServiceImpl(VentaRepository ventaRepository,
+                            UsuarioRepository usuarioRepository,
+                            ProductoRepository productoRepository,
+                            DetalleVentaRepository detalleVentaRepository) {
+        this.ventaRepository = ventaRepository;
+        this.usuarioRepository = usuarioRepository;
+        this.productoRepository = productoRepository;
+        this.detalleVentaRepository = detalleVentaRepository;
     }
 
     @Override
-    public Venta findById(Long id) {
-        return ventaRepository.findById(id).orElse(null);
+    public List<VentaResponseDTO> findAll() {
+        return ventaRepository.findAll().stream()
+                .map(this::toResponseDTO)
+                .toList();
     }
 
     @Override
-    public Venta save(Venta venta) {
-        return ventaRepository.save(venta);
+    public VentaResponseDTO findById(Long id) {
+        Venta venta = ventaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Venta no encontrada"));
+        return toResponseDTO(venta);
     }
 
     @Override
-    public List<Venta> findByUsuarioId(Long usuarioId) {
-        return ventaRepository.findByUsuarioId(usuarioId);
+    public VentaResponseDTO crear(VentaRequestDTO request) {
+        Usuario usuario = usuarioRepository.findById(request.usuarioId())
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        Venta venta = new Venta();
+        venta.setUsuario(usuario);
+        venta.setFecha(LocalDateTime.now());
+        Venta ventaGuardada = ventaRepository.save(venta);
+
+        for (DetalleVentaItemDTO item : request.detalles()) {
+            Producto producto = productoRepository.findById(item.productoId())
+                    .orElseThrow(() -> new RuntimeException("Producto no encontrado: " + item.productoId()));
+
+            DetalleVenta detalle = new DetalleVenta();
+            detalle.setVenta(ventaGuardada);
+            detalle.setProducto(producto);
+            detalle.setCantidad(item.cantidad());
+            detalle.setPrecio(producto.getPrecio());
+
+            detalleVentaRepository.save(detalle);
+        }
+
+        Venta ventaCompleta = ventaRepository.findById(ventaGuardada.getId())
+                .orElseThrow(() -> new RuntimeException("Error al recuperar la venta creada"));
+
+        return toResponseDTO(ventaCompleta);
+    }
+
+    @Override
+    public List<VentaResponseDTO> findByUsuarioId(Long usuarioId) {
+        if (!usuarioRepository.existsById(usuarioId)) {
+            throw new RuntimeException("Usuario no encontrado");
+        }
+
+        return ventaRepository.findByUsuarioId(usuarioId).stream()
+                .map(this::toResponseDTO)
+                .toList();
+    }
+
+    private VentaResponseDTO toResponseDTO(Venta venta) {
+        List<DetalleVentaResponseDTO> detallesDTO = venta.getDetalles().stream()
+                .map(detalle -> new DetalleVentaResponseDTO(
+                        detalle.getId(),
+                        detalle.getProducto().getId(),
+                        detalle.getProducto().getNombre(),
+                        detalle.getCantidad(),
+                        detalle.getPrecio()))
+                .toList();
+
+        Double total = venta.getDetalles().stream()
+                .mapToDouble(d -> d.getCantidad() * d.getPrecio())
+                .sum();
+
+        return new VentaResponseDTO(
+                venta.getId(),
+                venta.getUsuario().getId(),
+                venta.getUsuario().getUsername(),
+                venta.getFecha(),
+                total,
+                detallesDTO);
     }
 }

@@ -2,7 +2,6 @@ package com.minimarket.controller;
 
 import com.minimarket.dto.detalleVenta.DetalleVentaRequestDTO;
 import com.minimarket.dto.detalleVenta.DetalleVentaResponseDTO;
-import com.minimarket.entity.DetalleVenta;
 import com.minimarket.hateoas.DetalleVentaModelAssembler;
 import com.minimarket.service.DetalleVentaService;
 import io.swagger.v3.oas.annotations.Operation;
