@@ -1,29 +1,46 @@
 package com.minimarket.controller;
 
+import com.minimarket.dto.detalleVenta.DetalleVentaResponseDTO;
 import com.minimarket.entity.DetalleVenta;
+import com.minimarket.hateoas.DetalleVentaModelAssembler;
 import com.minimarket.service.DetalleVentaService;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/detalle-ventas")
+@Tag(name = "Detalle-Ventas", description = "Operaciones para gestionar Detalle-Ventas")
 public class DetalleVentaController {
 
-    @Autowired
-    private DetalleVentaService detalleVentaService;
+    private final DetalleVentaService detalleVentaService;
+    private final DetalleVentaModelAssembler assembler;
 
-    @GetMapping
-    public List<DetalleVenta> listarDetalleVentas() {
-        return detalleVentaService.findAll();
+    public DetalleVentaController(DetalleVentaService detalleVentaService, DetalleVentaModelAssembler assembler) {
+        this.detalleVentaService = detalleVentaService;
+        this.assembler = assembler;
     }
 
+    @Operation(summary = "Listar DetalleVenta", description = "Obtiene una lista con todas los DetalleVenta")
+    @ApiResponse(responseCode = "200", description = "Listado obtenido de forma correcta")
+    @GetMapping
+    public CollectionModel<EntityModel<DetalleVentaResponseDTO>> listarDetalleVentas() {
+        return assembler.toCollectionModel(detalleVentaService.findAll());
+    }
+
+    @Operation(summary = "Obtener DetalleVenta por ID", description = "Obtiene DetalleVenta por ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "DetalleVenta obtenida de forma correcta"),
+            @ApiResponse(responseCode = "404", description = "DetalleVenta no encontrado")
+    })
     @GetMapping("/{id}")
-    public ResponseEntity<DetalleVenta> obtenerDetalleVentaPorId(@PathVariable Long id) {
-        DetalleVenta detalleVenta = detalleVentaService.findById(id);
-        return (detalleVenta != null) ? ResponseEntity.ok(detalleVenta) : ResponseEntity.notFound().build();
+    public EntityModel<DetalleVentaResponseDTO> obtenerDetalleVentaPorId(@PathVariable Long id) {
+        return assembler.toModel(detalleVentaService.findById(id));
     }
 
     @PostMapping
