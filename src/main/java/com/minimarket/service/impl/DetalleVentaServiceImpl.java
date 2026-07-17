@@ -66,7 +66,22 @@ public class DetalleVentaServiceImpl implements DetalleVentaService {
 
     @Override
     public DetalleVentaResponseDTO actualizar(Long id, DetalleVentaRequestDTO request) {
-        return null;
+        DetalleVenta detalleVenta = detalleVentaRepository.findById(id).orElseThrow(() -> new RuntimeException("DetalleVenta no encontrado"));
+        Venta venta = ventaRepository.findById(request.ventaId()).orElseThrow(() -> new RuntimeException("Venta no encontrada"));
+        Producto producto = productoRepository.findById(request.productoId()).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        detalleVenta.setVenta(venta);
+        detalleVenta.setProducto(producto);
+        detalleVenta.setCantidad(request.cantidad());
+        detalleVenta.setPrecio(producto.getPrecio());
+
+        DetalleVenta detalleCreado = detalleVentaRepository.save(detalleVenta);
+        return new DetalleVentaResponseDTO(
+                detalleCreado.getId(),
+                detalleCreado.getProducto().getId(),
+                detalleCreado.getProducto().getNombre(),
+                detalleCreado.getCantidad(),
+                detalleCreado.getPrecio());
     }
 
     @Override
