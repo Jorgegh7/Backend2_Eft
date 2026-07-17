@@ -92,11 +92,28 @@ public class CarritoServiceImpl implements CarritoService {
 
     @Override
     public void deleteById(Long id) {
-
+        if(!carritoRepository.existsById(id)){
+            throw new RuntimeException("Carrito no encontrado");
+        }
+        carritoRepository.deleteById(id);
     }
 
     @Override
     public List<CarritoResponseDTO> findByUsuarioId(Long usuarioId) {
-        return List.of();
+        if (!usuarioRepository.existsById(usuarioId)) {
+            throw new RuntimeException("Usuario no encontrado");
+        }
+
+        List<Carrito> carritos = carritoRepository.findByUsuarioId(usuarioId);
+
+        return carritos.stream()
+                .map(carrito -> new CarritoResponseDTO(
+                        carrito.getId(),
+                        carrito.getUsuario().getId(),
+                        carrito.getUsuario().getUsername(),
+                        carrito.getProducto().getId(),
+                        carrito.getProducto().getNombre(),
+                        carrito.getCantidad()))
+                .toList();
     }
 }
