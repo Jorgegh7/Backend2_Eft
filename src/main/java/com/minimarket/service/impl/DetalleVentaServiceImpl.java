@@ -19,12 +19,26 @@ public class DetalleVentaServiceImpl implements DetalleVentaService {
 
     @Override
     public List<DetalleVentaResponseDTO> findAll() {
-        return List.of();
+        List<DetalleVenta> detalleVentas = detalleVentaRepository.findAll();
+        return detalleVentas.stream().map(detalleVenta ->
+                new DetalleVentaResponseDTO(
+                        detalleVenta.getId(),
+                        detalleVenta.getProducto().getId(),
+                        detalleVenta.getProducto().getNombre(),
+                        detalleVenta.getCantidad(),
+                        detalleVenta.getPrecio())).toList();
     }
 
     @Override
     public DetalleVentaResponseDTO findById(Long id) {
-        return null;
+        DetalleVenta detalleVenta = detalleVentaRepository
+                .findById(id).orElseThrow(() -> new RuntimeException("DetalleVenta no encontrado"));
+        return new DetalleVentaResponseDTO(
+                detalleVenta.getId(),
+                detalleVenta.getProducto().getId(),
+                detalleVenta.getProducto().getNombre(),
+                detalleVenta.getCantidad(),
+                detalleVenta.getPrecio());
     }
 
     @Override
