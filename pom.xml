@@ -123,6 +123,14 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<excludes>
+						<exclude>**/dto/**</exclude>
+						<exclude>**/security/model/**</exclude>
+						<exclude>**/hateoas/**</exclude>
+						<exclude>**/MinimarketApplication.class</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
