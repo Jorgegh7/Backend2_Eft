@@ -2,15 +2,14 @@ package com.minimarket.service;
 
 import com.minimarket.dto.producto.ProductoRequestDTO;
 import com.minimarket.dto.producto.ProductoResponseDTO;
-import com.minimarket.entity.Categoria;
-import com.minimarket.entity.DetalleVenta;
-import com.minimarket.entity.Producto;
+import com.minimarket.entity.*;
 import com.minimarket.repository.CarritoRepository;
 import com.minimarket.repository.CategoriaRepository;
 import com.minimarket.repository.DetalleVentaRepository;
 import com.minimarket.repository.InventarioRepository;
 import com.minimarket.repository.ProductoRepository;
 import com.minimarket.service.impl.ProductoServiceImpl;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -215,6 +214,34 @@ public class ProductoServiceImplTest {
 
         verify(inventarioRepository, never()).findByProductoId(any());
         verify(carritoRepository, never()).findByProductoId(any());
+        verify(productoRepository, never()).delete(any(Producto.class));
+    }
+
+    @Test
+    public void deleteById_conInventarioAsociado_debeLanzarExcepcion(){
+        //Arrange
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(detalleVentaRepository.findByProductoId(1L)).thenReturn(List.of());
+        when(inventarioRepository.findByProductoId(1L)).thenReturn(List.of(new Inventario()));
+
+        //Act & Assert
+        assertThrows(RuntimeException.class, () -> productoService.deleteById(1L));
+
+        verify(productoRepository, never()).delete(any(Producto.class));
+        verify(carritoRepository, never()).findByProductoId(any());
+    }
+
+    @Test
+    public void deleteById_conCarritoAsociado_debeLanzarExcepcion(){
+        //Arrange
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(detalleVentaRepository.findByProductoId(1L)).thenReturn(List.of());
+        when(inventarioRepository.findByProductoId(1L)).thenReturn(List.of());
+        when(carritoRepository.findByProductoId(1L)).thenReturn(List.of(new Carrito()));
+
+        //Act & Assert
+        assertThrows(RuntimeException.class, () -> productoService.deleteById(1L));
+
         verify(productoRepository, never()).delete(any(Producto.class));
     }
 
