@@ -1,4 +1,4 @@
-package com.minimarket.service.impl;
+package com.minimarket.service;
 
 import com.minimarket.dto.producto.ProductoRequestDTO;
 import com.minimarket.dto.producto.ProductoResponseDTO;
@@ -9,6 +9,7 @@ import com.minimarket.repository.CategoriaRepository;
 import com.minimarket.repository.DetalleVentaRepository;
 import com.minimarket.repository.InventarioRepository;
 import com.minimarket.repository.ProductoRepository;
+import com.minimarket.service.impl.ProductoServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -105,6 +106,34 @@ public class ProductoServiceImplTest {
 
         verify(productoRepository).findById(2L);
     }
+
+    @Test
+    public void crear_conCategoriaValida_debeCrearProductoConStockCero() {
+        // Arrange
+        ProductoRequestDTO productoRequestDTO = new ProductoRequestDTO("Arroz", 1500.0, 1L);
+
+        Producto productoGuardado = new Producto();
+        productoGuardado.setId(1L);
+        productoGuardado.setNombre("Arroz");
+        productoGuardado.setPrecio(1500.0);
+        productoGuardado.setStock(0);
+        productoGuardado.setCategoria(categoria);
+
+        when(categoriaRepository.findById(1L)).thenReturn(Optional.of(categoria));
+        when(productoRepository.save(any(Producto.class))).thenReturn(productoGuardado);
+
+        // Act
+        ProductoResponseDTO respuesta = productoService.crear(productoRequestDTO);
+
+        // Assert
+        assertNotNull(respuesta);
+        assertEquals(0, respuesta.stock());
+        assertEquals("Arroz", respuesta.nombre());
+        verify(productoRepository).save(any(Producto.class));
+    }
+
+
+
 
 
 
