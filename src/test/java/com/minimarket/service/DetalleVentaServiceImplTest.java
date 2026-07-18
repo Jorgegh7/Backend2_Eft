@@ -10,6 +10,7 @@ import com.minimarket.service.impl.DetalleVentaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -18,8 +19,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -103,4 +105,46 @@ public class DetalleVentaServiceImplTest {
         assertEquals(2, respuesta.cantidad());
         assertEquals(1500.0, respuesta.precio());
     }
+
+    @Test
+    public void findById_cuandoNoExiste_debeLanzarExcepcion() {
+        // Arrange
+        when(detalleVentaRepository.findById(2L)).thenReturn(Optional.empty());
+
+        // Act
+        RuntimeException excepcion = assertThrows(RuntimeException.class,
+                () -> detalleVentaService.findById(2L));
+
+        // Assert
+        assertEquals("DetalleVenta no encontrado", excepcion.getMessage());
+        verify(detalleVentaRepository).findById(2L);
+    }
+
+    @Test
+    public void agregarDetalle_conDatosValidos_debeCongelarPrecioDelProducto() {
+        // Arrange
+        DetalleVentaRequestDTO request = new DetalleVentaRequestDTO(1L, 1L, 2);
+
+        when(ventaRepository.findById(1L)).thenReturn(Optional.of(venta));
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(detalleVentaRepository.save(any(DetalleVenta.class))).thenReturn(detalleVenta);
+
+        ArgumentCaptor<DetalleVenta> captor = ArgumentCaptor.forClass(DetalleVenta.class);
+
+        // Act
+        DetalleVentaResponseDTO respuesta = detalleVentaService.agregarDetalle(request);
+
+        // Assert
+        verify(detalleVentaRepository).save(captor.capture());
+        DetalleVenta detalleGuardado = captor.getValue();
+
+        assertEquals(1500.0, detalleGuardado.getPrecio());
+        assertEquals(2, detalleGuardado.getCantidad());
+        assertNotNull(respuesta);
+    }
+
+
+
+
+
 }
