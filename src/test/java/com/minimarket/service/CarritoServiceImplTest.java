@@ -66,8 +66,35 @@ public class CarritoServiceImplTest {
         carrito.setCantidad(3);
     }
 
+    @Test
+    public void findAll_debeRetornarListaDeCarritos(){
+        //Arrange
+        when(carritoRepository.findAll()).thenReturn(List.of(carrito));
+
+        //Act
+        List<CarritoResponseDTO> respuesta = carritoService.findAll();
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals(1, respuesta.size());
+        assertEquals(1, respuesta.get(0).id());
+        assertEquals(3, respuesta.get(0).cantidad());
+        assertEquals(1, respuesta.get(0).productoId());
+        assertEquals("Arroz", respuesta.get(0).productoNombre());
+        assertEquals(1, respuesta.get(0).usuarioId());
+        assertEquals("jperez", respuesta.get(0).usuarioUsername());
+    }
+
+
+
+
+
 
 
 
     
+
+
+
+
 }
