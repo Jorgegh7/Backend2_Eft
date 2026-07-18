@@ -866,3 +866,57 @@ Caused by: java.lang.ClassFormatError: StackMapTable format error: reserved fram
 2026-07-18T12:54:02.609-04:00  INFO 8328 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-07-18T12:54:02.611-04:00  INFO 8328 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-07-18T12:54:02.808-04:00  INFO 8328 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-18T12:57:59.586-04:00  INFO 18380 --- [restartedMain] com.minimarket.MinimarketApplication     : Starting MinimarketApplication using Java 17.0.18 with PID 18380 (C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket\target\classes started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T12:57:59.588-04:00  INFO 18380 --- [restartedMain] com.minimarket.MinimarketApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T12:57:59.634-04:00  INFO 18380 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-18T12:57:59.634-04:00  INFO 18380 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-18T12:58:00.982-04:00  INFO 18380 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-18T12:58:01.077-04:00  INFO 18380 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 8 JPA repository interfaces.
+2026-07-18T12:58:01.897-04:00  INFO 18380 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-07-18T12:58:01.911-04:00  INFO 18380 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-18T12:58:01.911-04:00  INFO 18380 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2026-07-18T12:58:01.978-04:00  INFO 18380 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-07-18T12:58:01.978-04:00  INFO 18380 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2344 ms
+2026-07-18T12:58:02.121-04:00  INFO 18380 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-18T12:58:02.190-04:00  INFO 18380 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-07-18T12:58:02.224-04:00  INFO 18380 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-18T12:58:02.498-04:00  INFO 18380 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-18T12:58:02.533-04:00  INFO 18380 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-18T12:58:02.701-04:00  INFO 18380 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-18T12:58:02.703-04:00  INFO 18380 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-18T12:58:02.769-04:00  INFO 18380 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-18T12:58:03.710-04:00  INFO 18380 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-18T12:58:03.783-04:00  INFO 18380 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T12:58:04.160-04:00  INFO 18380 --- [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-18T12:58:04.432-04:00  WARN 18380 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-18T12:58:05.066-04:00  INFO 18380 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-07-18T12:58:05.208-04:00  INFO 18380 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-07-18T12:58:05.238-04:00  INFO 18380 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-07-18T12:58:05.249-04:00  INFO 18380 --- [restartedMain] com.minimarket.MinimarketApplication     : Started MinimarketApplication in 6.1 seconds (process running for 6.619)
+2026-07-18T12:58:08.161-04:00  INFO 18380 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-18T12:58:08.377-04:00  INFO 18380 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-07-18T12:58:08.382-04:00  INFO 18380 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T12:58:08.389-04:00  WARN 18380 --- [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2026-07-18T12:58:08.389-04:00  INFO 18380 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-18T12:58:08.390-04:00  INFO 18380 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-18T15:26:56.547-04:00  INFO 6388 --- [main] c.m.controller.CategoriaControllerTest   : Starting CategoriaControllerTest using Java 17.0.18 with PID 6388 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T15:26:56.550-04:00  INFO 6388 --- [main] c.m.controller.CategoriaControllerTest   : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T15:26:59.236-04:00  WARN 6388 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: f7092765-72cd-42d7-9874-c3f0a82c2fc7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-18T15:26:59.280-04:00  INFO 6388 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-18T15:26:59.477-04:00  INFO 6388 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T15:26:59.477-04:00  INFO 6388 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T15:26:59.479-04:00  INFO 6388 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T15:26:59.515-04:00  INFO 6388 --- [main] c.m.controller.CategoriaControllerTest   : Started CategoriaControllerTest in 3.422 seconds (process running for 4.6)
