@@ -132,6 +132,35 @@ public class ProductoServiceImplTest {
         verify(productoRepository).save(any(Producto.class));
     }
 
+    @Test
+    public void crear_conCategoriaInexistente_debeLanzarExcepcion(){
+        //Arrange
+        ProductoRequestDTO productoRequestDTO = new ProductoRequestDTO("Arroz", 1500.0, 2L);
+        when(categoriaRepository.findById(2L)).thenReturn(Optional.empty());
+
+        //Act & Assert
+        assertThrows(RuntimeException.class, () -> productoService.crear(productoRequestDTO));
+        verify(productoRepository, never()).save(any(Producto.class));
+    }
+
+    @Test
+    public void actualizar_conDatosValidos_debeActualizarProducto(){
+        //Arrange
+        ProductoRequestDTO productoRequestDTO = new ProductoRequestDTO("Fideos", 1500.0, 1L);
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(categoriaRepository.findById(1L)).thenReturn(Optional.of(categoria));
+        when(productoRepository.save(any(Producto.class))).thenReturn(producto);
+
+        //Act
+        ProductoResponseDTO respuesta = productoService.actualizar(1L, productoRequestDTO);
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals("Fideos", respuesta.nombre());
+        assertEquals(1500.0, respuesta.precio());
+        verify(productoRepository).save(any(Producto.class));
+    }
+
 
 
 
