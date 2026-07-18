@@ -93,4 +93,66 @@ public class InventarioServiceImplTest {
         assertEquals(1L, respuesta.productoId());
 
     }
+
+    @Test
+    public void registrarMovimiento_conEntrada_debeAumentarStock() {
+        // Arrange
+        InventarioRequestDTO request = new InventarioRequestDTO(1L, 5, TipoMovimiento.ENTRADA);
+
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(productoRepository.save(any(Producto.class))).thenReturn(producto);
+        when(inventarioRepository.save(any(Inventario.class))).thenReturn(inventario);
+
+        //Capturar el objeto exacto que se pasó como argumento en esa llamada
+        ArgumentCaptor<Producto> productoCaptor = ArgumentCaptor.forClass(Producto.class);
+
+        // Act
+        InventarioResponseDTO respuesta = inventarioService.registrarMovimiento(request);
+
+        // Assert
+        verify(productoRepository).save(productoCaptor.capture());  //Captura el objeto
+        Producto productoGuardado = productoCaptor.getValue();      //Objeto referenciado se guarda en una variable para manipularla
+        assertEquals(15, productoGuardado.getStock()); // 10 (inicial) + 5 (entrada) = 15
+
+        assertNotNull(respuesta);
+    }
+
+    @Test
+    public void registrarMovimiento_conSalida_debeDisminuirStock() {
+        // Arrange
+        InventarioRequestDTO request = new InventarioRequestDTO(1L, 3, TipoMovimiento.SALIDA);
+
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(productoRepository.save(any(Producto.class))).thenReturn(producto);
+        when(inventarioRepository.save(any(Inventario.class))).thenReturn(inventario);
+
+        ArgumentCaptor<Producto> productoCaptor = ArgumentCaptor.forClass(Producto.class);
+
+        // Act
+        InventarioResponseDTO respuesta = inventarioService.registrarMovimiento(request);
+
+        // Assert
+        verify(productoRepository).save(productoCaptor.capture());
+        Producto productoGuardado = productoCaptor.getValue();
+        assertEquals(7, productoGuardado.getStock()); // 10 (inicial) - 3 (salida) = 7
+
+        assertNotNull(respuesta);
+    }
+
+    @Test
+    public void deleteById_cuandoExiste_debeEliminarCorrectamente(){
+        //Arrange
+        when(inventarioRepository.findById(1L)).thenReturn(Optional.of(inventario));
+
+        //Act
+        inventarioService.deleteById(1L);
+
+        //Assert
+        verify(inventarioRepository).delete(inventario);
+    }
+
+
+
+
 }
+
