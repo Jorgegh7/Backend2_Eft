@@ -1,17 +1,20 @@
 package com.minimarket.service.impl;
 
 import com.minimarket.dto.detalleVenta.DetalleVentaResponseDTO;
+import com.minimarket.dto.inventario.InventarioRequestDTO;
 import com.minimarket.dto.venta.DetalleVentaItemDTO;
 import com.minimarket.dto.venta.VentaRequestDTO;
 import com.minimarket.dto.venta.VentaResponseDTO;
 import com.minimarket.entity.DetalleVenta;
 import com.minimarket.entity.Producto;
+import com.minimarket.entity.TipoMovimiento;
 import com.minimarket.entity.Usuario;
 import com.minimarket.entity.Venta;
 import com.minimarket.repository.DetalleVentaRepository;
 import com.minimarket.repository.ProductoRepository;
 import com.minimarket.repository.UsuarioRepository;
 import com.minimarket.repository.VentaRepository;
+import com.minimarket.service.InventarioService;
 import com.minimarket.service.VentaService;
 import org.springframework.stereotype.Service;
 
@@ -26,15 +29,18 @@ public class VentaServiceImpl implements VentaService {
     private final UsuarioRepository usuarioRepository;
     private final ProductoRepository productoRepository;
     private final DetalleVentaRepository detalleVentaRepository;
+    private final InventarioService inventarioService;
 
     public VentaServiceImpl(VentaRepository ventaRepository,
                             UsuarioRepository usuarioRepository,
                             ProductoRepository productoRepository,
-                            DetalleVentaRepository detalleVentaRepository) {
+                            DetalleVentaRepository detalleVentaRepository,
+                            InventarioService inventarioService) {
         this.ventaRepository = ventaRepository;
         this.usuarioRepository = usuarioRepository;
         this.productoRepository = productoRepository;
         this.detalleVentaRepository = detalleVentaRepository;
+        this.inventarioService = inventarioService;
     }
 
     @Override
@@ -67,12 +73,8 @@ public class VentaServiceImpl implements VentaService {
             Producto producto = productoRepository.findById(item.productoId())
                     .orElseThrow(() -> new RuntimeException("Producto no encontrado: " + item.productoId()));
 
-            if (producto.getStock() < item.cantidad()) {
-                throw new RuntimeException("Stock insuficiente para el producto: " + producto.getNombre());
-            }
-
-            producto.setStock(producto.getStock() - item.cantidad());
-            productoRepository.save(producto);
+            inventarioService.registrarMovimiento(
+                    new InventarioRequestDTO(item.productoId(), item.cantidad(), TipoMovimiento.SALIDA));
 
             DetalleVenta detalle = new DetalleVenta();
             detalle.setVenta(ventaGuardada);

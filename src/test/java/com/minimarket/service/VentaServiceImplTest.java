@@ -1,5 +1,6 @@
 package com.minimarket.service;
 
+import com.minimarket.dto.inventario.InventarioRequestDTO;
 import com.minimarket.dto.venta.DetalleVentaItemDTO;
 import com.minimarket.dto.venta.VentaRequestDTO;
 import com.minimarket.dto.venta.VentaResponseDTO;
@@ -37,6 +38,9 @@ public class VentaServiceImplTest {
 
     @Mock
     private DetalleVentaRepository detalleVentaRepository;
+
+    @Mock
+    private InventarioService inventarioService;
 
     @InjectMocks
     private VentaServiceImpl ventaService;
@@ -121,7 +125,6 @@ public class VentaServiceImplTest {
         when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
         when(ventaRepository.save(any(Venta.class))).thenReturn(venta);
         when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
-        when(productoRepository.save(any(Producto.class))).thenReturn(producto);
         when(detalleVentaRepository.save(any(DetalleVenta.class))).thenReturn(detalleVenta);
 
         // Act
@@ -130,8 +133,8 @@ public class VentaServiceImplTest {
         // Assert
         assertNotNull(respuesta);
         assertEquals(3000.0, respuesta.total());
+        verify(inventarioService).registrarMovimiento(any(InventarioRequestDTO.class));
         verify(detalleVentaRepository).save(any(DetalleVenta.class));
-        verify(productoRepository).save(any(Producto.class));
     }
 
     @Test
@@ -143,12 +146,13 @@ public class VentaServiceImplTest {
         when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
         when(ventaRepository.save(any(Venta.class))).thenReturn(venta);
         when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(inventarioService.registrarMovimiento(any(InventarioRequestDTO.class)))
+                .thenThrow(new RuntimeException("Stock insuficiente para realizar la salida"));
 
         // Act & Assert
         assertThrows(RuntimeException.class, () -> ventaService.crear(request));
 
         verify(detalleVentaRepository, never()).save(any(DetalleVenta.class));
-        verify(productoRepository, never()).save(any(Producto.class));
     }
 
     @Test

@@ -2,6 +2,7 @@ package com.minimarket.service;
 
 import com.minimarket.dto.detalleVenta.DetalleVentaRequestDTO;
 import com.minimarket.dto.detalleVenta.DetalleVentaResponseDTO;
+import com.minimarket.dto.inventario.InventarioRequestDTO;
 import com.minimarket.entity.*;
 import com.minimarket.repository.DetalleVentaRepository;
 import com.minimarket.repository.ProductoRepository;
@@ -10,7 +11,6 @@ import com.minimarket.service.impl.DetalleVentaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -20,9 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class DetalleVentaServiceImplTest {
@@ -35,6 +33,9 @@ public class DetalleVentaServiceImplTest {
 
     @Mock
     private ProductoRepository productoRepository;
+
+    @Mock
+    private InventarioService inventarioService;
 
     @InjectMocks
     private DetalleVentaServiceImpl detalleVentaService;
@@ -75,14 +76,11 @@ public class DetalleVentaServiceImplTest {
     }
 
     @Test
-    public void findAll_debeRetornarListaDeDetalles(){
-        //Arrange
+    public void findAll_debeRetornarListaDeDetalles() {
         when(detalleVentaRepository.findAll()).thenReturn(List.of(detalleVenta));
 
-        //Act
         List<DetalleVentaResponseDTO> respuesta = detalleVentaService.findAll();
 
-        //Assert
         assertNotNull(respuesta);
         assertEquals(1L, respuesta.get(0).id());
         assertEquals(1L, respuesta.get(0).productoId());
@@ -91,14 +89,11 @@ public class DetalleVentaServiceImplTest {
     }
 
     @Test
-    public void findById_cuandoExiste_debeRetornarDetalle(){
-        //Arrange
+    public void findById_cuandoExiste_debeRetornarDetalle() {
         when(detalleVentaRepository.findById(1L)).thenReturn(Optional.of(detalleVenta));
 
-        //Act
         DetalleVentaResponseDTO respuesta = detalleVentaService.findById(1L);
 
-        //Assert
         assertNotNull(respuesta);
         assertEquals(1L, respuesta.id());
         assertEquals(1L, respuesta.productoId());
@@ -108,20 +103,17 @@ public class DetalleVentaServiceImplTest {
 
     @Test
     public void findById_cuandoNoExiste_debeLanzarExcepcion() {
-        // Arrange
         when(detalleVentaRepository.findById(2L)).thenReturn(Optional.empty());
 
-        // Act
         RuntimeException excepcion = assertThrows(RuntimeException.class,
                 () -> detalleVentaService.findById(2L));
 
-        // Assert
         assertEquals("DetalleVenta no encontrado", excepcion.getMessage());
         verify(detalleVentaRepository).findById(2L);
     }
 
     @Test
-    public void agregarDetalle_conDatosValidos_debeCongelarPrecioDelProducto() {
+    public void agregarDetalle_conDatosValidos_debeRegistrarSalidaEnInventario() {
         // Arrange
         DetalleVentaRequestDTO request = new DetalleVentaRequestDTO(1L, 1L, 2);
 
@@ -129,55 +121,50 @@ public class DetalleVentaServiceImplTest {
         when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
         when(detalleVentaRepository.save(any(DetalleVenta.class))).thenReturn(detalleVenta);
 
-        ArgumentCaptor<DetalleVenta> captor = ArgumentCaptor.forClass(DetalleVenta.class);
-
         // Act
         DetalleVentaResponseDTO respuesta = detalleVentaService.agregarDetalle(request);
 
         // Assert
-        verify(detalleVentaRepository).save(captor.capture());
-        DetalleVenta detalleGuardado = captor.getValue();
-
-        assertEquals(1500.0, detalleGuardado.getPrecio());
-        assertEquals(2, detalleGuardado.getCantidad());
         assertNotNull(respuesta);
+        assertEquals(1500.0, respuesta.precio());
+        verify(inventarioService).registrarMovimiento(any(InventarioRequestDTO.class));
+        verify(detalleVentaRepository).save(any(DetalleVenta.class));
     }
 
     @Test
-    public void agregarDetalle_conVentaInexistente_debeLanzarExcepcion(){
-        //Arrange
-        DetalleVentaRequestDTO detalleVentaRequestDTO = new DetalleVentaRequestDTO(2L, 1L, 2);
+    public void agregarDetalle_conVentaInexistente_debeLanzarExcepcion() {
+        DetalleVentaRequestDTO request = new DetalleVentaRequestDTO(2L, 1L, 2);
         when(ventaRepository.findById(2L)).thenReturn(Optional.empty());
 
-        //Act
         RuntimeException excepcion = assertThrows(RuntimeException.class,
-                () -> detalleVentaService.agregarDetalle(detalleVentaRequestDTO));
+                () -> detalleVentaService.agregarDetalle(request));
 
-        //Assert
         assertEquals("Venta no encontrada", excepcion.getMessage());
-        verify(ventaRepository).findById(2L);
+        verify(inventarioService, never()).registrarMovimiento(any(InventarioRequestDTO.class));
+        verify(detalleVentaRepository, never()).save(any(DetalleVenta.class));
     }
 
     @Test
-    public void deleteById_cuandoExiste_debeEliminarCorrectamente(){
-        //Arrange
-        when(detalleVentaRepository.findById(1L)).thenReturn(Optional.of(detalleVenta));
+    public void agregarDetalle_conStockInsuficiente_debeLanzarExcepcion() {
+        DetalleVentaRequestDTO request = new DetalleVentaRequestDTO(1L, 1L, 100);
 
-        //Act
-        detalleVentaService.deleteById(1L);
+        when(ventaRepository.findById(1L)).thenReturn(Optional.of(venta));
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(inventarioService.registrarMovimiento(any(InventarioRequestDTO.class)))
+                .thenThrow(new RuntimeException("Stock insuficiente para realizar la salida"));
 
-        //Assert
-        verify(detalleVentaRepository).deleteById(1L);
+        assertThrows(RuntimeException.class, () -> detalleVentaService.agregarDetalle(request));
+
+        verify(detalleVentaRepository, never()).save(any(DetalleVenta.class));
     }
 
     @Test
-    public void actualizar_conDatosValidos_debeActualizarDetalle() {
+    public void actualizar_conVentaValida_debeReasignarDetalle() {
         // Arrange
-        DetalleVentaRequestDTO request = new DetalleVentaRequestDTO(1L, 1L, 4);
+        DetalleVentaRequestDTO request = new DetalleVentaRequestDTO(1L, 1L, 2);
 
         when(detalleVentaRepository.findById(1L)).thenReturn(Optional.of(detalleVenta));
         when(ventaRepository.findById(1L)).thenReturn(Optional.of(venta));
-        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
         when(detalleVentaRepository.save(any(DetalleVenta.class))).thenReturn(detalleVenta);
 
         // Act
@@ -186,23 +173,46 @@ public class DetalleVentaServiceImplTest {
         // Assert
         assertNotNull(respuesta);
         verify(detalleVentaRepository).save(any(DetalleVenta.class));
+        verify(inventarioService, never()).registrarMovimiento(any(InventarioRequestDTO.class));
+    }
+
+    @Test
+    public void actualizar_cuandoDetalleNoExiste_debeLanzarExcepcion() {
+        DetalleVentaRequestDTO request = new DetalleVentaRequestDTO(1L, 1L, 4);
+        when(detalleVentaRepository.findById(2L)).thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () -> detalleVentaService.actualizar(2L, request));
+
+        verify(detalleVentaRepository, never()).save(any(DetalleVenta.class));
+    }
+
+    @Test
+    public void deleteById_cuandoExiste_debeEliminarCorrectamente() {
+        when(detalleVentaRepository.findById(1L)).thenReturn(Optional.of(detalleVenta));
+
+        detalleVentaService.deleteById(1L);
+
+        verify(detalleVentaRepository).deleteById(1L);
+    }
+
+    @Test
+    public void deleteById_cuandoNoExiste_debeLanzarExcepcion() {
+        when(detalleVentaRepository.findById(2L)).thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () -> detalleVentaService.deleteById(2L));
+
+        verify(detalleVentaRepository, never()).deleteById(any());
     }
 
     @Test
     public void findByVentaId_conVentaValida_debeRetornarDetalles() {
-        // Arrange
         when(ventaRepository.findById(1L)).thenReturn(Optional.of(venta));
         when(detalleVentaRepository.findByVentaId(1L)).thenReturn(List.of(detalleVenta));
 
-        // Act
         List<DetalleVentaResponseDTO> respuesta = detalleVentaService.findByVentaId(1L);
 
-        // Assert
         assertNotNull(respuesta);
         assertEquals(1, respuesta.size());
         assertEquals(1500.0, respuesta.get(0).precio());
     }
-
-
-
 }
