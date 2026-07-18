@@ -91,5 +91,21 @@ public class CategoriaServiceImplTest {
         verify(categoriaRepository).findById(1L);
     }
 
+    @Test
+    public void crear_conNombreValido_debeCrearCategoria() {
+        // Arrange
+        CategoriaRequestDTO categoriaRequestDTO = new CategoriaRequestDTO(categoria.getNombre());
+        when(categoriaRepository.existsByNombre(categoria.getNombre())).thenReturn(false);
+        when(categoriaRepository.save(any(Categoria.class))).thenReturn(categoria);
+
+        // Act
+        CategoriaResponseDTO respuesta = categoriaService.crear(categoriaRequestDTO);
+
+        // Assert
+        assertNotNull(respuesta);
+        assertEquals("Bebidas", respuesta.nombre());
+        verify(categoriaRepository).save(any(Categoria.class));
+    }
+
 
 }
