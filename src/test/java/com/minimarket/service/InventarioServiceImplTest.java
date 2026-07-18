@@ -151,6 +151,28 @@ public class InventarioServiceImplTest {
         verify(inventarioRepository).delete(inventario);
     }
 
+    @Test
+    public void deleteById_cuandoNoExiste_debeLanzarExcepcion(){
+        //Arrange
+        when(inventarioRepository.findById(2L)).thenReturn(Optional.empty());
+
+        //Act & Assert
+        assertThrows(RuntimeException.class, () -> inventarioService.deleteById(2L));
+
+        verify(inventarioRepository, never()).delete(inventario);
+    }
+
+    @Test
+    public void findByProductoId_conProductoInexistente_debeLanzarExcepcion(){
+        //Arrange
+        when(productoRepository.findById(2L)).thenReturn(Optional.empty());
+
+        //Act & Assert
+        assertThrows(RuntimeException.class, () -> inventarioService.findByProductoId(2L));
+
+        verify(inventarioRepository, never()).findByProductoId(2L);
+    }
+
 
 
 
