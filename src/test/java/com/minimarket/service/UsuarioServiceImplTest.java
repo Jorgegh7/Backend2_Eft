@@ -16,6 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -111,5 +112,36 @@ public class UsuarioServiceImplTest {
         assertTrue(respuesta.roles().contains("CLIENTE"));
     }
 
+    @Test
+    public void findByUsername_cuandoNoExiste_debeLanzarExcepcion(){
+        //Arrange
+        when(usuarioRepository.findByUsername("noexiste")).thenReturn(Optional.empty());
 
+        //Act & Assert
+        assertThrows(RuntimeException.class, ()-> usuarioService.findByUsername("noexiste"));
+
+        verify(usuarioRepository).findByUsername("noexiste");
+    }
+
+    @Test
+    public void actualizar_conRolesValidos_debeActualizarRoles() {
+        // Arrange
+        Rol rolGerente = new Rol();
+        rolGerente.setId(2L);
+        rolGerente.setNombre("GERENTE");
+
+        UsuarioRequestDTO usuarioRequestDTO = new UsuarioRequestDTO(Set.of("GERENTE"));
+
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
+        when(rolRepository.findByNombre("GERENTE")).thenReturn(Optional.of(rolGerente));
+        when(usuarioRepository.save(any(Usuario.class))).thenReturn(usuario);
+
+        // Act
+        UsuarioResponseDTO respuesta = usuarioService.actualizar(1L, usuarioRequestDTO);
+
+        // Assert
+        assertNotNull(respuesta);
+        assertTrue(respuesta.roles().contains("GERENTE"));
+        verify(usuarioRepository).save(any(Usuario.class));
+    }
 }

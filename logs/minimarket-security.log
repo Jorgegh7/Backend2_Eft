@@ -334,3 +334,31 @@ Caused by: java.lang.ClassFormatError: StackMapTable format error: reserved fram
 2026-07-18T09:21:45.085-04:00  INFO 17796 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-07-18T09:21:45.087-04:00  INFO 17796 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-07-18T09:21:45.280-04:00  INFO 17796 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-18T09:28:33.185-04:00  INFO 21056 --- [main] c.minimarket.MinimarketApplicationTests  : Starting MinimarketApplicationTests using Java 21.0.10 with PID 21056 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T09:28:33.187-04:00  INFO 21056 --- [main] c.minimarket.MinimarketApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T09:28:34.623-04:00  INFO 21056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-18T09:28:34.744-04:00  INFO 21056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 8 JPA repository interfaces.
+2026-07-18T09:28:35.558-04:00  INFO 21056 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-18T09:28:35.664-04:00  INFO 21056 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-07-18T09:28:35.721-04:00  INFO 21056 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-18T09:28:36.184-04:00  INFO 21056 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-18T09:28:36.237-04:00  INFO 21056 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-18T09:28:36.608-04:00  INFO 21056 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-18T09:28:36.611-04:00  INFO 21056 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-18T09:28:36.731-04:00  INFO 21056 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-18T09:28:38.399-04:00  INFO 21056 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-18T09:28:38.557-04:00  INFO 21056 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T09:28:39.033-04:00  INFO 21056 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-18T09:28:39.361-04:00  WARN 21056 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-18T09:28:40.398-04:00  INFO 21056 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-07-18T09:28:40.594-04:00  INFO 21056 --- [main] c.minimarket.MinimarketApplicationTests  : Started MinimarketApplicationTests in 7.897 seconds (process running for 9.854)
+2026-07-18T09:28:42.388-04:00  INFO 21056 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T09:28:42.391-04:00  INFO 21056 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-18T09:28:42.590-04:00  INFO 21056 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
