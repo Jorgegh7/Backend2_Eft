@@ -28,8 +28,6 @@ public class DetalleVentaServiceImpl implements DetalleVentaService {
     }
 
 
-
-
     @Override
     public List<DetalleVentaResponseDTO> findAll() {
         List<DetalleVenta> detalleVentas = detalleVentaRepository.findAll();

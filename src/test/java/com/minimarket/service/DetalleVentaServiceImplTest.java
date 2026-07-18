@@ -15,6 +15,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class DetalleVentaServiceImplTest {
@@ -68,7 +74,33 @@ public class DetalleVentaServiceImplTest {
 
     @Test
     public void findAll_debeRetornarListaDeDetalles(){
+        //Arrange
+        when(detalleVentaRepository.findAll()).thenReturn(List.of(detalleVenta));
 
-        
+        //Act
+        List<DetalleVentaResponseDTO> respuesta = detalleVentaService.findAll();
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals(1L, respuesta.get(0).id());
+        assertEquals(1L, respuesta.get(0).productoId());
+        assertEquals(2, respuesta.get(0).cantidad());
+        assertEquals(1500.0, respuesta.get(0).precio());
+    }
+
+    @Test
+    public void findById_cuandoExiste_debeRetornarDetalle(){
+        //Arrange
+        when(detalleVentaRepository.findById(1L)).thenReturn(Optional.of(detalleVenta));
+
+        //Act
+        DetalleVentaResponseDTO respuesta = detalleVentaService.findById(1L);
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals(1L, respuesta.id());
+        assertEquals(1L, respuesta.productoId());
+        assertEquals(2, respuesta.cantidad());
+        assertEquals(1500.0, respuesta.precio());
     }
 }
