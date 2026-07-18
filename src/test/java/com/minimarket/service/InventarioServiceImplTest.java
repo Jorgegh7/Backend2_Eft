@@ -59,4 +59,38 @@ public class InventarioServiceImplTest {
         inventario.setTipoMovimiento(TipoMovimiento.ENTRADA);
         inventario.setFechaMovimiento(LocalDateTime.now());
     }
+
+    @Test
+    public void findAll_debeRetornarListaDeMovimientos(){
+        //Arrange
+        when(inventarioRepository.findAll()).thenReturn(List.of(inventario));
+
+        //Act
+        List<InventarioResponseDTO> respuesta = inventarioService.findAll();
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals(1, respuesta.size());
+        assertEquals(TipoMovimiento.ENTRADA, respuesta.get(0).tipoMovimiento());
+        assertEquals(5, respuesta.get(0).cantidad());
+        assertEquals("Arroz", respuesta.get(0).productoNombre());
+        assertEquals(1L, respuesta.get(0).productoId());
+    }
+
+    @Test
+    public void findById_cuandoExiste_debeRetornarMovimiento(){
+        //Arrange
+        when(inventarioRepository.findById(1L)).thenReturn(Optional.of(inventario));
+
+        //Act
+        InventarioResponseDTO respuesta = inventarioService.findById(1L);
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals(TipoMovimiento.ENTRADA, respuesta.tipoMovimiento());
+        assertEquals(5, respuesta.cantidad());
+        assertEquals("Arroz", respuesta.productoNombre());
+        assertEquals(1L, respuesta.productoId());
+
+    }
 }
