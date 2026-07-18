@@ -136,7 +136,49 @@ public class CarritoServiceImplTest {
     }
     @Test
     public void actualizar_conDatosValidos_debeActualizarCarrito(){
-        
+        //Arrange
+        CarritoRequestDTO carritoRequestDTO = new CarritoRequestDTO(1L, 1L, 5);
+        when(carritoRepository.findById(1L)).thenReturn(Optional.of(carrito));
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(carritoRepository.save(any(Carrito.class))).thenReturn(carrito);
+
+        //Act
+        CarritoResponseDTO respuesta = carritoService.actualizar(1L, carritoRequestDTO);
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals(1, respuesta.id());
+        assertEquals(5, respuesta.cantidad());
+        assertEquals(1, respuesta.productoId());
+        assertEquals("Arroz", respuesta.productoNombre());
+        assertEquals(1, respuesta.usuarioId());
+        assertEquals("jperez", respuesta.usuarioUsername());
+    }
+
+    @Test
+    public void deleteById_cuandoExiste_debeEliminarCorrectamente(){
+        //Arrange
+        when(carritoRepository.existsById(1L)).thenReturn(true);
+
+        //Act
+        carritoService.deleteById(1L);
+
+        //Assert
+        verify(carritoRepository).existsById(1L);
+        verify(carritoRepository).deleteById(1L);
+    }
+
+    @Test
+    public void deleteById_cuandoNoExiste_debeLanzarExcepcion(){
+        //Arrange
+        when(carritoRepository.existsById(2L)).thenReturn(false);
+
+        //Act & Assert
+        assertThrows(RuntimeException.class,() -> carritoService.deleteById(2L));
+
+        verify(carritoRepository).existsById(2L);
+        verify(carritoRepository, never()).deleteById(2L);
     }
 
 
