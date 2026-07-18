@@ -170,6 +170,39 @@ public class DetalleVentaServiceImplTest {
         verify(detalleVentaRepository).deleteById(1L);
     }
 
+    @Test
+    public void actualizar_conDatosValidos_debeActualizarDetalle() {
+        // Arrange
+        DetalleVentaRequestDTO request = new DetalleVentaRequestDTO(1L, 1L, 4);
+
+        when(detalleVentaRepository.findById(1L)).thenReturn(Optional.of(detalleVenta));
+        when(ventaRepository.findById(1L)).thenReturn(Optional.of(venta));
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(detalleVentaRepository.save(any(DetalleVenta.class))).thenReturn(detalleVenta);
+
+        // Act
+        DetalleVentaResponseDTO respuesta = detalleVentaService.actualizar(1L, request);
+
+        // Assert
+        assertNotNull(respuesta);
+        verify(detalleVentaRepository).save(any(DetalleVenta.class));
+    }
+
+    @Test
+    public void findByVentaId_conVentaValida_debeRetornarDetalles() {
+        // Arrange
+        when(ventaRepository.findById(1L)).thenReturn(Optional.of(venta));
+        when(detalleVentaRepository.findByVentaId(1L)).thenReturn(List.of(detalleVenta));
+
+        // Act
+        List<DetalleVentaResponseDTO> respuesta = detalleVentaService.findByVentaId(1L);
+
+        // Assert
+        assertNotNull(respuesta);
+        assertEquals(1, respuesta.size());
+        assertEquals(1500.0, respuesta.get(0).precio());
+    }
+
 
 
 }
