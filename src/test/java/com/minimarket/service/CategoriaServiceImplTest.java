@@ -107,5 +107,17 @@ public class CategoriaServiceImplTest {
         verify(categoriaRepository).save(any(Categoria.class));
     }
 
+    @Test
+    public void crear_conNombreDuplicado_debeLanzarExcepcion(){
+        //Arrange
+        CategoriaRequestDTO categoriaRequestDTO = new CategoriaRequestDTO(categoria.getNombre());
+        when(categoriaRepository.existsByNombre(categoria.getNombre())).thenReturn(true);
+
+        // Act & Assert
+        assertThrows(RuntimeException.class, () -> categoriaService.crear(categoriaRequestDTO));
+
+        verify(categoriaRepository, never()).save(any(Categoria.class));
+    }
+
 
 }
