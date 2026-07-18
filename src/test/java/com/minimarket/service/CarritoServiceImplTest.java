@@ -181,6 +181,26 @@ public class CarritoServiceImplTest {
         verify(carritoRepository, never()).deleteById(2L);
     }
 
+    @Test
+    public void findByUsuarioId_conUsuarioValido_debeRetornarCarritos(){
+        //Arrange
+        when(usuarioRepository.existsById(1L)).thenReturn(true);
+        when(carritoRepository.findByUsuarioId(1L)).thenReturn(List.of(carrito));
+
+        //Act
+        List<CarritoResponseDTO> respuesta = carritoService.findByUsuarioId(1L);
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals(1, respuesta.get(0).id());
+        assertEquals(3, respuesta.get(0).cantidad());
+        assertEquals(1, respuesta.get(0).productoId());
+        assertEquals("Arroz", respuesta.get(0).productoNombre());
+        assertEquals(1, respuesta.get(0).usuarioId());
+        assertEquals("jperez", respuesta.get(0).usuarioUsername());
+
+    }
+
 
 
 
