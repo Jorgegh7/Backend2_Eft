@@ -69,6 +69,46 @@ public class UsuarioServiceImplTest {
         assertNotNull(respuesta);
         assertEquals(1, respuesta.size());
         assertEquals("jperez", respuesta.get(0).username());
+        assertTrue(respuesta.get(0).roles().contains("CLIENTE"));
+    }
+
+    @Test
+    public void findById_cuandoExiste_debeRetornarUsuario(){
+        //Arrange
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
+
+        //Act
+        UsuarioResponseDTO respuesta = usuarioService.findById(1L);
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals("jperez", respuesta.username());
+        assertTrue(respuesta.roles().contains("CLIENTE"));
+    }
+
+    @Test
+    public void findById_cuandoNoExiste_debeLanzarExcepcion(){
+        //Arrange
+        when(usuarioRepository.findById(2L)).thenReturn(Optional.empty());
+
+        //Act & Assert
+        assertThrows(RuntimeException.class, ()-> usuarioService.findById(2L));
+
+        verify(usuarioRepository).findById(2L);
+    }
+
+    @Test
+    public void findByUsername_cuandoExiste_debeRetornarUsuario(){
+        //Arrange
+        when(usuarioRepository.findByUsername("jperez")).thenReturn(Optional.of(usuario));
+
+        //Act
+        UsuarioResponseDTO respuesta = usuarioService.findByUsername("jperez");
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals("jperez", respuesta.username());
+        assertTrue(respuesta.roles().contains("CLIENTE"));
     }
 
 
