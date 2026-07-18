@@ -3,6 +3,7 @@ package com.minimarket.service;
 import com.minimarket.dto.producto.ProductoRequestDTO;
 import com.minimarket.dto.producto.ProductoResponseDTO;
 import com.minimarket.entity.Categoria;
+import com.minimarket.entity.DetalleVenta;
 import com.minimarket.entity.Producto;
 import com.minimarket.repository.CarritoRepository;
 import com.minimarket.repository.CategoriaRepository;
@@ -185,8 +186,37 @@ public class ProductoServiceImplTest {
 
     }
 
+    @Test
+    public void deleteById_sinRelaciones_debeEliminarCorrectamente() {
+        // Arrange
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(detalleVentaRepository.findByProductoId(1L)).thenReturn(List.of());
+        when(inventarioRepository.findByProductoId(1L)).thenReturn(List.of());
+        when(carritoRepository.findByProductoId(1L)).thenReturn(List.of());
 
+        // Act
+        productoService.deleteById(1L);
 
+        // Assert
+        verify(productoRepository).delete(producto);
+    }
+
+    @Test
+    public void deleteById_conVentasAsociadas_debeLanzarExcepcion() {
+        // Arrange
+        DetalleVenta detalleVenta = new DetalleVenta();
+        detalleVenta.setId(1L);
+
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(detalleVentaRepository.findByProductoId(1L)).thenReturn(List.of(detalleVenta));
+
+        // Act & Assert
+        assertThrows(RuntimeException.class, () -> productoService.deleteById(1L));
+
+        verify(inventarioRepository, never()).findByProductoId(any());
+        verify(carritoRepository, never()).findByProductoId(any());
+        verify(productoRepository, never()).delete(any(Producto.class));
+    }
 
 
 
