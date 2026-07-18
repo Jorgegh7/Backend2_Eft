@@ -143,7 +143,32 @@ public class DetalleVentaServiceImplTest {
         assertNotNull(respuesta);
     }
 
+    @Test
+    public void agregarDetalle_conVentaInexistente_debeLanzarExcepcion(){
+        //Arrange
+        DetalleVentaRequestDTO detalleVentaRequestDTO = new DetalleVentaRequestDTO(2L, 1L, 2);
+        when(ventaRepository.findById(2L)).thenReturn(Optional.empty());
 
+        //Act
+        RuntimeException excepcion = assertThrows(RuntimeException.class,
+                () -> detalleVentaService.agregarDetalle(detalleVentaRequestDTO));
+
+        //Assert
+        assertEquals("Venta no encontrada", excepcion.getMessage());
+        verify(ventaRepository).findById(2L);
+    }
+
+    @Test
+    public void deleteById_cuandoExiste_debeEliminarCorrectamente(){
+        //Arrange
+        when(detalleVentaRepository.findById(1L)).thenReturn(Optional.of(detalleVenta));
+
+        //Act
+        detalleVentaService.deleteById(1L);
+
+        //Assert
+        verify(detalleVentaRepository).deleteById(1L);
+    }
 
 
 
