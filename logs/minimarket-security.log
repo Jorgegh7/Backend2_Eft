@@ -3756,3 +3756,115 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
 2026-07-18T17:55:59.395-04:00  INFO 17644 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-07-18T17:55:59.397-04:00  INFO 17644 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-18T18:09:42.403-04:00  INFO 4216 --- [main] c.m.controller.AuthControllerTest        : Starting AuthControllerTest using Java 21.0.10 with PID 4216 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T18:09:42.405-04:00  INFO 4216 --- [main] c.m.controller.AuthControllerTest        : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T18:09:46.072-04:00  INFO 4216 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T18:09:47.190-04:00  INFO 4216 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T18:09:47.191-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T18:09:47.193-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-07-18T18:09:47.239-04:00  INFO 4216 --- [main] c.m.controller.AuthControllerTest        : Started AuthControllerTest in 5.521 seconds (process running for 7.687)
+2026-07-18T18:09:47.764-04:00  INFO 4216 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.CarritoControllerTest]: CarritoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T18:09:47.776-04:00  INFO 4216 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.CarritoControllerTest
+2026-07-18T18:09:47.781-04:00  INFO 4216 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T18:09:47.824-04:00  INFO 4216 --- [main] c.m.controller.CarritoControllerTest     : Starting CarritoControllerTest using Java 21.0.10 with PID 4216 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T18:09:47.825-04:00  INFO 4216 --- [main] c.m.controller.CarritoControllerTest     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T18:09:48.269-04:00  INFO 4216 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T18:09:48.476-04:00  INFO 4216 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T18:09:48.477-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T18:09:48.478-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T18:09:48.488-04:00  INFO 4216 --- [main] c.m.controller.CarritoControllerTest     : Started CarritoControllerTest in 0.707 seconds (process running for 8.936)
+2026-07-18T18:09:48.689-04:00  INFO 4216 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.CategoriaControllerTest]: CategoriaControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T18:09:48.703-04:00  INFO 4216 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.CategoriaControllerTest
+2026-07-18T18:09:48.710-04:00  INFO 4216 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T18:09:48.741-04:00  INFO 4216 --- [main] c.m.controller.CategoriaControllerTest   : Starting CategoriaControllerTest using Java 21.0.10 with PID 4216 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T18:09:48.741-04:00  INFO 4216 --- [main] c.m.controller.CategoriaControllerTest   : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T18:09:49.094-04:00  INFO 4216 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T18:09:49.258-04:00  INFO 4216 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T18:09:49.259-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T18:09:49.260-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T18:09:49.268-04:00  INFO 4216 --- [main] c.m.controller.CategoriaControllerTest   : Started CategoriaControllerTest in 0.558 seconds (process running for 9.717)
+2026-07-18T18:09:49.361-04:00  INFO 4216 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.DetalleVentaControllerTest]: DetalleVentaControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T18:09:49.370-04:00  INFO 4216 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.DetalleVentaControllerTest
+2026-07-18T18:09:49.374-04:00  INFO 4216 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T18:09:49.397-04:00  INFO 4216 --- [main] c.m.c.DetalleVentaControllerTest         : Starting DetalleVentaControllerTest using Java 21.0.10 with PID 4216 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T18:09:49.397-04:00  INFO 4216 --- [main] c.m.c.DetalleVentaControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T18:09:49.708-04:00  INFO 4216 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T18:09:49.836-04:00  INFO 4216 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T18:09:49.836-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T18:09:49.836-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-07-18T18:09:49.843-04:00  INFO 4216 --- [main] c.m.c.DetalleVentaControllerTest         : Started DetalleVentaControllerTest in 0.469 seconds (process running for 10.291)
+2026-07-18T18:09:49.941-04:00  INFO 4216 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.InventarioControllerTest]: InventarioControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T18:09:49.950-04:00  INFO 4216 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.InventarioControllerTest
+2026-07-18T18:09:49.953-04:00  INFO 4216 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T18:09:49.975-04:00  INFO 4216 --- [main] c.m.controller.InventarioControllerTest  : Starting InventarioControllerTest using Java 21.0.10 with PID 4216 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T18:09:49.975-04:00  INFO 4216 --- [main] c.m.controller.InventarioControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T18:09:50.285-04:00  INFO 4216 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T18:09:50.408-04:00  INFO 4216 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T18:09:50.409-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T18:09:50.409-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-07-18T18:09:50.416-04:00  INFO 4216 --- [main] c.m.controller.InventarioControllerTest  : Started InventarioControllerTest in 0.463 seconds (process running for 10.864)
+2026-07-18T18:09:50.503-04:00  INFO 4216 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.ProductoControllerTest]: ProductoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T18:09:50.511-04:00  INFO 4216 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.ProductoControllerTest
+2026-07-18T18:09:50.515-04:00  INFO 4216 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T18:09:50.535-04:00  INFO 4216 --- [main] c.m.controller.ProductoControllerTest    : Starting ProductoControllerTest using Java 21.0.10 with PID 4216 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T18:09:50.536-04:00  INFO 4216 --- [main] c.m.controller.ProductoControllerTest    : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T18:09:50.827-04:00  INFO 4216 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T18:09:50.945-04:00  INFO 4216 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T18:09:50.945-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T18:09:50.946-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T18:09:50.952-04:00  INFO 4216 --- [main] c.m.controller.ProductoControllerTest    : Started ProductoControllerTest in 0.438 seconds (process running for 11.401)
+2026-07-18T18:09:51.072-04:00  INFO 4216 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.UsuarioControllerTest]: UsuarioControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T18:09:51.081-04:00  INFO 4216 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.UsuarioControllerTest
+2026-07-18T18:09:51.085-04:00  INFO 4216 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T18:09:51.107-04:00  INFO 4216 --- [main] c.m.controller.UsuarioControllerTest     : Starting UsuarioControllerTest using Java 21.0.10 with PID 4216 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T18:09:51.107-04:00  INFO 4216 --- [main] c.m.controller.UsuarioControllerTest     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T18:09:51.438-04:00  INFO 4216 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T18:09:51.537-04:00  INFO 4216 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T18:09:51.538-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T18:09:51.538-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-07-18T18:09:51.544-04:00  INFO 4216 --- [main] c.m.controller.UsuarioControllerTest     : Started UsuarioControllerTest in 0.459 seconds (process running for 11.993)
+2026-07-18T18:09:51.621-04:00  INFO 4216 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.VentaControllerTest]: VentaControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T18:09:51.629-04:00  INFO 4216 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.VentaControllerTest
+2026-07-18T18:09:51.633-04:00  INFO 4216 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T18:09:51.651-04:00  INFO 4216 --- [main] c.m.controller.VentaControllerTest       : Starting VentaControllerTest using Java 21.0.10 with PID 4216 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T18:09:51.652-04:00  INFO 4216 --- [main] c.m.controller.VentaControllerTest       : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T18:09:51.931-04:00  INFO 4216 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T18:09:52.032-04:00  INFO 4216 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T18:09:52.033-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T18:09:52.033-04:00  INFO 4216 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-07-18T18:09:52.039-04:00  INFO 4216 --- [main] c.m.controller.VentaControllerTest       : Started VentaControllerTest in 0.407 seconds (process running for 12.488)
+2026-07-18T18:09:52.166-04:00  INFO 4216 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.MinimarketApplicationTests]: MinimarketApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T18:09:52.175-04:00  INFO 4216 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.MinimarketApplicationTests
+2026-07-18T18:09:52.181-04:00  INFO 4216 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T18:09:52.201-04:00  INFO 4216 --- [main] c.minimarket.MinimarketApplicationTests  : Starting MinimarketApplicationTests using Java 21.0.10 with PID 4216 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T18:09:52.201-04:00  INFO 4216 --- [main] c.minimarket.MinimarketApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T18:09:52.707-04:00  INFO 4216 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-18T18:09:52.793-04:00  INFO 4216 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73 ms. Found 8 JPA repository interfaces.
+2026-07-18T18:09:53.143-04:00  INFO 4216 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-18T18:09:53.251-04:00  INFO 4216 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-07-18T18:09:53.305-04:00  INFO 4216 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-18T18:09:53.520-04:00  INFO 4216 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-18T18:09:53.573-04:00  INFO 4216 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-18T18:09:53.946-04:00  INFO 4216 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-18T18:09:53.949-04:00  INFO 4216 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-18T18:09:54.079-04:00  INFO 4216 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-18T18:09:55.554-04:00  INFO 4216 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-18T18:09:55.699-04:00  INFO 4216 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T18:09:56.086-04:00  INFO 4216 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-18T18:09:56.286-04:00  WARN 4216 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-18T18:09:56.664-04:00  INFO 4216 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-07-18T18:09:56.815-04:00  INFO 4216 --- [main] c.minimarket.MinimarketApplicationTests  : Started MinimarketApplicationTests in 4.633 seconds (process running for 17.263)
+2026-07-18T18:09:57.446-04:00  INFO 4216 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T18:09:57.449-04:00  INFO 4216 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-18T18:09:57.642-04:00  INFO 4216 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-18T18:10:30.997-04:00  INFO 15352 --- [restartedMain] com.minimarket.MinimarketApplication     : Starting MinimarketApplication using Java 17.0.18 with PID 15352 (C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket\target\classes started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T18:10:30.999-04:00  INFO 15352 --- [restartedMain] com.minimarket.MinimarketApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T18:10:31.044-04:00  INFO 15352 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-18T18:10:31.044-04:00  INFO 15352 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
