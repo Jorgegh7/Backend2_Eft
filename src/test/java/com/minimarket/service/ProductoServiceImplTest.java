@@ -71,7 +71,39 @@ public class ProductoServiceImplTest {
         //Assert
         assertNotNull(respuesta);
         assertEquals(1, respuesta.size());
+        assertEquals("Arroz", respuesta.get(0).nombre());
+        assertEquals(1500.0, respuesta.get(0).precio());
+        assertEquals(1L, respuesta.get(0).categoriaId());
         verify(productoRepository).findAll();
+    }
+
+    @Test
+    public void findById_cuandoExiste_debeRetornarProducto() {
+        // Arrange
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+
+        // Act
+        ProductoResponseDTO respuesta = productoService.findById(1L);
+
+        // Assert
+        assertNotNull(respuesta);
+        assertEquals("Arroz", respuesta.nombre());
+        assertEquals(1500.0, respuesta.precio());
+        assertEquals(10, respuesta.stock());
+        assertEquals(1L, respuesta.categoriaId());
+        assertEquals("Abarrotes", respuesta.categoriaNombre());
+        verify(productoRepository).findById(1L);
+    }
+
+    @Test
+    public void findById_cuandoNoExiste_debeLanzarExcepcion(){
+        //Arrange
+        when(productoRepository.findById(2L)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        assertThrows(RuntimeException.class, () -> productoService.findById(2L));
+
+        verify(productoRepository).findById(2L);
     }
 
 
