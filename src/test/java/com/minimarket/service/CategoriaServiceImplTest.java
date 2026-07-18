@@ -119,5 +119,47 @@ public class CategoriaServiceImplTest {
         verify(categoriaRepository, never()).save(any(Categoria.class));
     }
 
+    @Test
+    public void actualizar_conDatosValidos_debeActualizarCategoria() {
+        // Arrange
+        CategoriaRequestDTO categoriaRequestDTO = new CategoriaRequestDTO("Lacteos");
+        when(categoriaRepository.findById(1L)).thenReturn(Optional.of(categoria));
+        when(categoriaRepository.existsByNombreAndIdNot("Lacteos", 1L)).thenReturn(false);
+        when(categoriaRepository.save(any(Categoria.class))).thenReturn(categoria);
+
+        // Act
+        CategoriaResponseDTO respuesta = categoriaService.actualizar(1L, categoriaRequestDTO);
+
+        // Assert
+        assertNotNull(respuesta);
+        assertEquals("Lacteos", respuesta.nombre());
+        verify(categoriaRepository).save(any(Categoria.class));
+    }
+
+    @Test
+    public void actualizar_cuandoCategoriaNoExiste_debeLanzarExcepcion(){
+        //Arrange
+        CategoriaRequestDTO categoriaRequestDTO = new CategoriaRequestDTO("Lacteos");
+        when(categoriaRepository.findById(2L)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        assertThrows(RuntimeException.class, () -> categoriaService.actualizar(2L, categoriaRequestDTO));
+
+        verify(categoriaRepository, never()).save(any(Categoria.class));
+    }
+
+    @Test
+    public void actualizar_conNombreDuplicadoDeOtraCategoria_debeLanzarExcepcion() {
+        // Arrange
+        CategoriaRequestDTO categoriaRequestDTO = new CategoriaRequestDTO("Lacteos");
+        when(categoriaRepository.findById(1L)).thenReturn(Optional.of(categoria));
+        when(categoriaRepository.existsByNombreAndIdNot("Lacteos", 1L)).thenReturn(true);
+
+        // Act & Assert
+        assertThrows(RuntimeException.class, () -> categoriaService.actualizar(1L, categoriaRequestDTO));
+
+        verify(categoriaRepository, never()).save(any(Categoria.class));
+    }
+
 
 }
