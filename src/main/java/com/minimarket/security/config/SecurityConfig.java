@@ -114,6 +114,21 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/carrito", "/api/carrito/**")
                         .hasAnyAuthority("CLIENTE", "ASISTENTE", "GERENTE")
 
+                        // DetalleVenta:
+                        // Consultar: Gerente, Jefe de Turno (igual que Venta).
+                        .requestMatchers(HttpMethod.GET, "/api/detalle-ventas", "/api/detalle-ventas/**")
+                        .hasAnyAuthority("GERENTE", "JEFE_TURNO")
+
+                        // Agregar detalle a una venta: Cajero, Jefe de Turno, Gerente (igual que registrar venta).
+                        .requestMatchers(HttpMethod.POST, "/api/detalle-ventas", "/api/detalle-ventas/**")
+                        .hasAnyAuthority("GERENTE", "JEFE_TURNO", "CAJERO")
+
+                        // Actualizar/eliminar detalle: solo Gerente (por el riesgo de descuadre contable que documentamos).
+                        .requestMatchers(HttpMethod.PUT, "/api/detalle-ventas", "/api/detalle-ventas/**")
+                        .hasAuthority("GERENTE")
+                        .requestMatchers(HttpMethod.DELETE, "/api/detalle-ventas", "/api/detalle-ventas/**")
+                        .hasAuthority("GERENTE")
+
                         // Cualquier otra ruta requiere autenticación.
                         .anyRequest().authenticated()
                 )

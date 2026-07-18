@@ -16,6 +16,7 @@ import com.minimarket.service.VentaService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -60,6 +61,8 @@ public class VentaServiceImpl implements VentaService {
         venta.setFecha(LocalDateTime.now());
         Venta ventaGuardada = ventaRepository.save(venta);
 
+        List<DetalleVenta> detallesCreados = new ArrayList<>();
+
         for (DetalleVentaItemDTO item : request.detalles()) {
             Producto producto = productoRepository.findById(item.productoId())
                     .orElseThrow(() -> new RuntimeException("Producto no encontrado: " + item.productoId()));
@@ -70,13 +73,12 @@ public class VentaServiceImpl implements VentaService {
             detalle.setCantidad(item.cantidad());
             detalle.setPrecio(producto.getPrecio());
 
-            detalleVentaRepository.save(detalle);
+            detallesCreados.add(detalleVentaRepository.save(detalle));
         }
 
-        Venta ventaCompleta = ventaRepository.findById(ventaGuardada.getId())
-                .orElseThrow(() -> new RuntimeException("Error al recuperar la venta creada"));
+        ventaGuardada.setDetalles(detallesCreados);
 
-        return toResponseDTO(ventaCompleta);
+        return toResponseDTO(ventaGuardada);
     }
 
     @Override
