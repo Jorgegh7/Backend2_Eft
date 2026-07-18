@@ -144,4 +144,19 @@ public class UsuarioServiceImplTest {
         assertTrue(respuesta.roles().contains("GERENTE"));
         verify(usuarioRepository).save(any(Usuario.class));
     }
+
+    @Test
+    public void deleteById_sinRelaciones_debeEliminarCorrectamente(){
+        //Arrange
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
+        when(ventaRepository.findByUsuarioId(1L)).thenReturn(List.of());
+        when(carritoRepository.findByUsuarioId(1L)).thenReturn(List.of());
+
+        //Act
+        usuarioService.deleteById(1L);
+
+        //Assert
+        verify(usuarioRepository).findById(1L);
+        verify(usuarioRepository).delete(usuario);
+    }
 }
