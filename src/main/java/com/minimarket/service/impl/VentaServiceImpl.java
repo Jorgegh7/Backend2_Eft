@@ -67,6 +67,13 @@ public class VentaServiceImpl implements VentaService {
             Producto producto = productoRepository.findById(item.productoId())
                     .orElseThrow(() -> new RuntimeException("Producto no encontrado: " + item.productoId()));
 
+            if (producto.getStock() < item.cantidad()) {
+                throw new RuntimeException("Stock insuficiente para el producto: " + producto.getNombre());
+            }
+
+            producto.setStock(producto.getStock() - item.cantidad());
+            productoRepository.save(producto);
+
             DetalleVenta detalle = new DetalleVenta();
             detalle.setVenta(ventaGuardada);
             detalle.setProducto(producto);

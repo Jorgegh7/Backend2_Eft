@@ -3144,3 +3144,410 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
 2026-07-18T17:07:27.355-04:00  INFO 3196 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-07-18T17:07:27.357-04:00  INFO 3196 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-18T17:11:09.367-04:00  INFO 19448 --- [restartedMain] com.minimarket.MinimarketApplication     : Starting MinimarketApplication using Java 17.0.18 with PID 19448 (C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket\target\classes started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:11:09.370-04:00  INFO 19448 --- [restartedMain] com.minimarket.MinimarketApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:11:09.422-04:00  INFO 19448 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-18T17:11:09.422-04:00  INFO 19448 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-18T17:11:10.406-04:00  INFO 19448 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-18T17:11:10.490-04:00  INFO 19448 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 8 JPA repository interfaces.
+2026-07-18T17:11:11.211-04:00  INFO 19448 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-07-18T17:11:11.225-04:00  INFO 19448 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-18T17:11:11.225-04:00  INFO 19448 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2026-07-18T17:11:11.297-04:00  INFO 19448 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-07-18T17:11:11.297-04:00  INFO 19448 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1873 ms
+2026-07-18T17:11:11.448-04:00  INFO 19448 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-18T17:11:11.522-04:00  INFO 19448 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-07-18T17:11:11.558-04:00  INFO 19448 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-18T17:11:11.858-04:00  INFO 19448 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-18T17:11:11.892-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-18T17:11:12.056-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-18T17:11:12.059-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-18T17:11:12.125-04:00  INFO 19448 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-18T17:11:13.096-04:00  INFO 19448 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-18T17:11:13.165-04:00  INFO 19448 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T17:11:13.535-04:00  INFO 19448 --- [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-18T17:11:13.802-04:00  WARN 19448 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-18T17:11:14.432-04:00  INFO 19448 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-07-18T17:11:14.567-04:00  INFO 19448 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-07-18T17:11:14.598-04:00  INFO 19448 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-07-18T17:11:14.609-04:00  INFO 19448 --- [restartedMain] com.minimarket.MinimarketApplication     : Started MinimarketApplication in 5.699 seconds (process running for 6.186)
+2026-07-18T17:11:29.918-04:00  INFO 19448 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-18T17:11:29.918-04:00  INFO 19448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-07-18T17:11:29.920-04:00  INFO 19448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-07-18T17:11:30.944-04:00  INFO 19448 --- [http-nio-8080-exec-8] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 692 ms
+2026-07-18T17:18:14.378-04:00  INFO 19448 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 77 class path changes (0 additions, 76 deletions, 1 modification)
+2026-07-18T17:18:14.381-04:00  INFO 19448 --- [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-18T17:18:14.602-04:00  INFO 19448 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-07-18T17:18:14.609-04:00  INFO 19448 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T17:18:14.616-04:00  WARN 19448 --- [Thread-5] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2026-07-18T17:18:14.617-04:00  INFO 19448 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-18T17:18:14.618-04:00  INFO 19448 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-18T17:18:14.728-04:00  INFO 19448 --- [restartedMain] com.minimarket.MinimarketApplication     : Starting MinimarketApplication using Java 17.0.18 with PID 19448 (C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket\target\classes started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:14.728-04:00  INFO 19448 --- [restartedMain] com.minimarket.MinimarketApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:15.028-04:00  INFO 19448 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-18T17:18:15.030-04:00  INFO 19448 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0 ms. Found 0 JPA repository interfaces.
+2026-07-18T17:18:15.182-04:00  INFO 19448 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-07-18T17:18:15.183-04:00  INFO 19448 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-18T17:18:15.184-04:00  INFO 19448 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2026-07-18T17:18:15.210-04:00  INFO 19448 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-07-18T17:18:15.211-04:00  INFO 19448 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 480 ms
+2026-07-18T17:18:15.248-04:00  INFO 19448 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-18T17:18:15.253-04:00  INFO 19448 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-18T17:18:15.267-04:00  INFO 19448 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-18T17:18:15.268-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-07-18T17:18:15.271-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
+2026-07-18T17:18:15.271-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-07-18T17:18:15.272-04:00  INFO 19448 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-18T17:18:15.300-04:00  INFO 19448 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-18T17:18:15.301-04:00  INFO 19448 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T17:18:15.345-04:00  WARN 19448 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-18T17:18:15.491-04:00  INFO 19448 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-07-18T17:18:15.511-04:00  WARN 19448 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #1 of file [C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket\target\classes\data.sql]: INSERT INTO rol (nombre) VALUES ('GERENTE')
+2026-07-18T17:18:15.512-04:00  INFO 19448 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T17:18:15.513-04:00  WARN 19448 --- [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2026-07-18T17:18:15.514-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-07-18T17:18:15.539-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-07-18T17:18:15.540-04:00  INFO 19448 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-07-18T17:18:15.548-04:00  INFO 19448 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-07-18T17:18:15.578-04:00 ERROR 19448 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #1 of file [C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket\target\classes\data.sql]: INSERT INTO rol (nombre) VALUES ('GERENTE')
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1808) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:289) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:312) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1093) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1030) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.1.jar:3.4.1]
+	at com.minimarket.MinimarketApplication.main(MinimarketApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.1.jar:3.4.1]
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of file [C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket\target\classes\data.sql]: INSERT INTO rol (nombre) VALUES ('GERENTE')
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282) ~[spring-jdbc-6.2.1.jar:6.2.1]
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254) ~[spring-jdbc-6.2.1.jar:6.2.1]
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54) ~[spring-jdbc-6.2.1.jar:6.2.1]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855) ~[spring-beans-6.2.1.jar:6.2.1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-6.2.1.jar:6.2.1]
+	... 25 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROL" not found (this database is empty); SQL statement:
+INSERT INTO rol (nombre) VALUES ('GERENTE') [42104-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:7932) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:7916) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.readTableOrView(Parser.java:7895) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.readTableOrView(Parser.java:7857) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parseInsert(Parser.java:1521) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parsePrepared(Parser.java:698) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parse(Parser.java:581) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parse(Parser.java:556) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.prepareCommand(Parser.java:484) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.3.232.jar:2.3.232]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-6.2.1.jar:6.2.1]
+	... 35 common frames omitted
+
+2026-07-18T17:18:17.074-04:00  INFO 19448 --- [restartedMain] com.minimarket.MinimarketApplication     : Starting MinimarketApplication using Java 17.0.18 with PID 19448 (C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket\target\classes started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:17.074-04:00  INFO 19448 --- [restartedMain] com.minimarket.MinimarketApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:17.871-04:00  INFO 19448 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-18T17:18:17.913-04:00  INFO 19448 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 8 JPA repository interfaces.
+2026-07-18T17:18:18.042-04:00  INFO 19448 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-07-18T17:18:18.043-04:00  INFO 19448 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-18T17:18:18.044-04:00  INFO 19448 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2026-07-18T17:18:18.064-04:00  INFO 19448 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-07-18T17:18:18.065-04:00  INFO 19448 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 989 ms
+2026-07-18T17:18:18.116-04:00  INFO 19448 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-18T17:18:18.122-04:00  INFO 19448 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-18T17:18:18.135-04:00  INFO 19448 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-18T17:18:18.137-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-07-18T17:18:18.139-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn16: url=jdbc:h2:mem:testdb user=SA
+2026-07-18T17:18:18.139-04:00  INFO 19448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-07-18T17:18:18.140-04:00  INFO 19448 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-18T17:18:18.294-04:00  INFO 19448 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-18T17:18:18.311-04:00  INFO 19448 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T17:18:18.377-04:00  INFO 19448 --- [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-18T17:18:18.528-04:00  WARN 19448 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-18T17:18:18.772-04:00  INFO 19448 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-07-18T17:18:18.813-04:00  INFO 19448 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-07-18T17:18:18.826-04:00  INFO 19448 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-07-18T17:18:18.830-04:00  INFO 19448 --- [restartedMain] com.minimarket.MinimarketApplication     : Started MinimarketApplication in 1.784 seconds (process running for 430.407)
+2026-07-18T17:18:18.832-04:00  INFO 19448 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-07-18T17:18:21.131-04:00  INFO 14564 --- [main] c.m.controller.AuthControllerTest        : Starting AuthControllerTest using Java 21.0.10 with PID 14564 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:21.133-04:00  INFO 14564 --- [main] c.m.controller.AuthControllerTest        : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:24.395-04:00  INFO 14564 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:18:25.417-04:00  INFO 14564 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:18:25.418-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:18:25.420-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T17:18:25.471-04:00  INFO 14564 --- [main] c.m.controller.AuthControllerTest        : Started AuthControllerTest in 4.993 seconds (process running for 7.204)
+2026-07-18T17:18:25.999-04:00  INFO 14564 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.CarritoControllerTest]: CarritoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:18:26.014-04:00  INFO 14564 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.CarritoControllerTest
+2026-07-18T17:18:26.020-04:00  INFO 14564 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:18:26.060-04:00  INFO 14564 --- [main] c.m.controller.CarritoControllerTest     : Starting CarritoControllerTest using Java 21.0.10 with PID 14564 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:26.060-04:00  INFO 14564 --- [main] c.m.controller.CarritoControllerTest     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:26.546-04:00  INFO 14564 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:18:26.776-04:00  INFO 14564 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:18:26.776-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:18:26.777-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T17:18:26.787-04:00  INFO 14564 --- [main] c.m.controller.CarritoControllerTest     : Started CarritoControllerTest in 0.767 seconds (process running for 8.519)
+2026-07-18T17:18:26.987-04:00  INFO 14564 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.CategoriaControllerTest]: CategoriaControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:18:26.998-04:00  INFO 14564 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.CategoriaControllerTest
+2026-07-18T17:18:27.002-04:00  INFO 14564 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:18:27.033-04:00  INFO 14564 --- [main] c.m.controller.CategoriaControllerTest   : Starting CategoriaControllerTest using Java 21.0.10 with PID 14564 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:27.034-04:00  INFO 14564 --- [main] c.m.controller.CategoriaControllerTest   : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:27.368-04:00  INFO 14564 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:18:27.533-04:00  INFO 14564 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:18:27.534-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:18:27.534-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-07-18T17:18:27.543-04:00  INFO 14564 --- [main] c.m.controller.CategoriaControllerTest   : Started CategoriaControllerTest in 0.541 seconds (process running for 9.276)
+2026-07-18T17:18:27.627-04:00  INFO 14564 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.DetalleVentaControllerTest]: DetalleVentaControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:18:27.637-04:00  INFO 14564 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.DetalleVentaControllerTest
+2026-07-18T17:18:27.641-04:00  INFO 14564 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:18:27.663-04:00  INFO 14564 --- [main] c.m.c.DetalleVentaControllerTest         : Starting DetalleVentaControllerTest using Java 21.0.10 with PID 14564 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:27.663-04:00  INFO 14564 --- [main] c.m.c.DetalleVentaControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:27.979-04:00  INFO 14564 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:18:28.124-04:00  INFO 14564 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:18:28.125-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:18:28.125-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-07-18T17:18:28.133-04:00  INFO 14564 --- [main] c.m.c.DetalleVentaControllerTest         : Started DetalleVentaControllerTest in 0.493 seconds (process running for 9.866)
+2026-07-18T17:18:28.240-04:00  INFO 14564 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.InventarioControllerTest]: InventarioControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:18:28.250-04:00  INFO 14564 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.InventarioControllerTest
+2026-07-18T17:18:28.254-04:00  INFO 14564 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:18:28.280-04:00  INFO 14564 --- [main] c.m.controller.InventarioControllerTest  : Starting InventarioControllerTest using Java 21.0.10 with PID 14564 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:28.281-04:00  INFO 14564 --- [main] c.m.controller.InventarioControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:28.587-04:00  INFO 14564 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:18:28.732-04:00  INFO 14564 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:18:28.733-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:18:28.733-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-07-18T17:18:28.741-04:00  INFO 14564 --- [main] c.m.controller.InventarioControllerTest  : Started InventarioControllerTest in 0.487 seconds (process running for 10.473)
+2026-07-18T17:18:28.838-04:00  INFO 14564 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.ProductoControllerTest]: ProductoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:18:28.849-04:00  INFO 14564 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.ProductoControllerTest
+2026-07-18T17:18:28.852-04:00  INFO 14564 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:18:28.876-04:00  INFO 14564 --- [main] c.m.controller.ProductoControllerTest    : Starting ProductoControllerTest using Java 21.0.10 with PID 14564 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:28.876-04:00  INFO 14564 --- [main] c.m.controller.ProductoControllerTest    : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:29.178-04:00  INFO 14564 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:18:29.299-04:00  INFO 14564 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:18:29.300-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:18:29.301-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T17:18:29.308-04:00  INFO 14564 --- [main] c.m.controller.ProductoControllerTest    : Started ProductoControllerTest in 0.456 seconds (process running for 11.04)
+2026-07-18T17:18:29.398-04:00  INFO 14564 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.UsuarioControllerTest]: UsuarioControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:18:29.406-04:00  INFO 14564 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.UsuarioControllerTest
+2026-07-18T17:18:29.409-04:00  INFO 14564 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:18:29.429-04:00  INFO 14564 --- [main] c.m.controller.UsuarioControllerTest     : Starting UsuarioControllerTest using Java 21.0.10 with PID 14564 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:29.430-04:00  INFO 14564 --- [main] c.m.controller.UsuarioControllerTest     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:29.722-04:00  INFO 14564 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:18:29.865-04:00  INFO 14564 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:18:29.865-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:18:29.866-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-07-18T17:18:29.873-04:00  INFO 14564 --- [main] c.m.controller.UsuarioControllerTest     : Started UsuarioControllerTest in 0.464 seconds (process running for 11.606)
+2026-07-18T17:18:29.961-04:00  INFO 14564 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.VentaControllerTest]: VentaControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:18:29.969-04:00  INFO 14564 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.VentaControllerTest
+2026-07-18T17:18:29.972-04:00  INFO 14564 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:18:29.993-04:00  INFO 14564 --- [main] c.m.controller.VentaControllerTest       : Starting VentaControllerTest using Java 21.0.10 with PID 14564 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:29.994-04:00  INFO 14564 --- [main] c.m.controller.VentaControllerTest       : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:30.265-04:00  INFO 14564 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:18:30.371-04:00  INFO 14564 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:18:30.371-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:18:30.372-04:00  INFO 14564 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T17:18:30.378-04:00  INFO 14564 --- [main] c.m.controller.VentaControllerTest       : Started VentaControllerTest in 0.406 seconds (process running for 12.111)
+2026-07-18T17:18:30.527-04:00  INFO 14564 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.MinimarketApplicationTests]: MinimarketApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:18:30.536-04:00  INFO 14564 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.MinimarketApplicationTests
+2026-07-18T17:18:30.544-04:00  INFO 14564 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:18:30.562-04:00  INFO 14564 --- [main] c.minimarket.MinimarketApplicationTests  : Starting MinimarketApplicationTests using Java 21.0.10 with PID 14564 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:18:30.562-04:00  INFO 14564 --- [main] c.minimarket.MinimarketApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:18:31.063-04:00  INFO 14564 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-18T17:18:31.145-04:00  INFO 14564 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 8 JPA repository interfaces.
+2026-07-18T17:18:31.481-04:00  INFO 14564 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-18T17:18:31.598-04:00  INFO 14564 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-07-18T17:18:31.653-04:00  INFO 14564 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-18T17:18:31.862-04:00  INFO 14564 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-18T17:18:31.917-04:00  INFO 14564 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-18T17:18:32.308-04:00  INFO 14564 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-18T17:18:32.310-04:00  INFO 14564 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-18T17:18:32.414-04:00  INFO 14564 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-18T17:18:33.760-04:00  INFO 14564 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-18T17:18:33.900-04:00  INFO 14564 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T17:18:34.289-04:00  INFO 14564 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-18T17:18:34.495-04:00  WARN 14564 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-18T17:18:34.923-04:00  INFO 14564 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-07-18T17:18:35.063-04:00  INFO 14564 --- [main] c.minimarket.MinimarketApplicationTests  : Started MinimarketApplicationTests in 4.519 seconds (process running for 16.796)
+2026-07-18T17:18:35.725-04:00  INFO 14564 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T17:18:35.728-04:00  INFO 14564 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-18T17:18:35.926-04:00  INFO 14564 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-18T17:20:32.268-04:00  INFO 19448 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-18T17:20:32.482-04:00  INFO 19448 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-07-18T17:20:32.484-04:00  INFO 19448 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T17:20:32.485-04:00  WARN 19448 --- [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2026-07-18T17:20:32.485-04:00  INFO 19448 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-07-18T17:20:32.486-04:00  INFO 19448 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2026-07-18T17:23:14.575-04:00  INFO 3216 --- [main] c.m.controller.AuthControllerTest        : Starting AuthControllerTest using Java 21.0.10 with PID 3216 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:23:14.576-04:00  INFO 3216 --- [main] c.m.controller.AuthControllerTest        : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:26:06.385-04:00  INFO 17892 --- [main] c.m.controller.AuthControllerTest        : Starting AuthControllerTest using Java 21.0.10 with PID 17892 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:26:06.387-04:00  INFO 17892 --- [main] c.m.controller.AuthControllerTest        : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:26:09.926-04:00  INFO 17892 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:26:10.959-04:00  INFO 17892 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:26:10.959-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:26:10.961-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-07-18T17:26:11.002-04:00  INFO 17892 --- [main] c.m.controller.AuthControllerTest        : Started AuthControllerTest in 5.464 seconds (process running for 7.565)
+2026-07-18T17:26:11.495-04:00  INFO 17892 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.CarritoControllerTest]: CarritoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:26:11.512-04:00  INFO 17892 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.CarritoControllerTest
+2026-07-18T17:26:11.518-04:00  INFO 17892 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:26:11.558-04:00  INFO 17892 --- [main] c.m.controller.CarritoControllerTest     : Starting CarritoControllerTest using Java 21.0.10 with PID 17892 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:26:11.559-04:00  INFO 17892 --- [main] c.m.controller.CarritoControllerTest     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:26:11.981-04:00  INFO 17892 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:26:12.151-04:00  INFO 17892 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:26:12.151-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:26:12.152-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T17:26:12.162-04:00  INFO 17892 --- [main] c.m.controller.CarritoControllerTest     : Started CarritoControllerTest in 0.645 seconds (process running for 8.726)
+2026-07-18T17:26:12.357-04:00  INFO 17892 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.CategoriaControllerTest]: CategoriaControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:26:12.368-04:00  INFO 17892 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.CategoriaControllerTest
+2026-07-18T17:26:12.373-04:00  INFO 17892 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:26:12.403-04:00  INFO 17892 --- [main] c.m.controller.CategoriaControllerTest   : Starting CategoriaControllerTest using Java 21.0.10 with PID 17892 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:26:12.404-04:00  INFO 17892 --- [main] c.m.controller.CategoriaControllerTest   : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:26:12.765-04:00  INFO 17892 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:26:12.901-04:00  INFO 17892 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:26:12.901-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:26:12.902-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-07-18T17:26:12.910-04:00  INFO 17892 --- [main] c.m.controller.CategoriaControllerTest   : Started CategoriaControllerTest in 0.537 seconds (process running for 9.474)
+2026-07-18T17:26:12.997-04:00  INFO 17892 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.DetalleVentaControllerTest]: DetalleVentaControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:26:13.008-04:00  INFO 17892 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.DetalleVentaControllerTest
+2026-07-18T17:26:13.012-04:00  INFO 17892 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:26:13.035-04:00  INFO 17892 --- [main] c.m.c.DetalleVentaControllerTest         : Starting DetalleVentaControllerTest using Java 21.0.10 with PID 17892 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:26:13.035-04:00  INFO 17892 --- [main] c.m.c.DetalleVentaControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:26:13.375-04:00  INFO 17892 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:26:13.500-04:00  INFO 17892 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:26:13.500-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:26:13.501-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T17:26:13.510-04:00  INFO 17892 --- [main] c.m.c.DetalleVentaControllerTest         : Started DetalleVentaControllerTest in 0.498 seconds (process running for 10.073)
+2026-07-18T17:26:13.607-04:00  INFO 17892 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.InventarioControllerTest]: InventarioControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:26:13.615-04:00  INFO 17892 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.InventarioControllerTest
+2026-07-18T17:26:13.619-04:00  INFO 17892 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:26:13.641-04:00  INFO 17892 --- [main] c.m.controller.InventarioControllerTest  : Starting InventarioControllerTest using Java 21.0.10 with PID 17892 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:26:13.641-04:00  INFO 17892 --- [main] c.m.controller.InventarioControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:26:13.964-04:00  INFO 17892 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:26:14.074-04:00  INFO 17892 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:26:14.074-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:26:14.075-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T17:26:14.081-04:00  INFO 17892 --- [main] c.m.controller.InventarioControllerTest  : Started InventarioControllerTest in 0.462 seconds (process running for 10.645)
+2026-07-18T17:26:14.168-04:00  INFO 17892 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.ProductoControllerTest]: ProductoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:26:14.175-04:00  INFO 17892 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.ProductoControllerTest
+2026-07-18T17:26:14.179-04:00  INFO 17892 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:26:14.201-04:00  INFO 17892 --- [main] c.m.controller.ProductoControllerTest    : Starting ProductoControllerTest using Java 21.0.10 with PID 17892 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:26:14.201-04:00  INFO 17892 --- [main] c.m.controller.ProductoControllerTest    : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:26:14.498-04:00  INFO 17892 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:26:14.609-04:00  INFO 17892 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:26:14.609-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:26:14.610-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T17:26:14.616-04:00  INFO 17892 --- [main] c.m.controller.ProductoControllerTest    : Started ProductoControllerTest in 0.438 seconds (process running for 11.179)
+2026-07-18T17:26:14.697-04:00  INFO 17892 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.UsuarioControllerTest]: UsuarioControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:26:14.705-04:00  INFO 17892 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.UsuarioControllerTest
+2026-07-18T17:26:14.708-04:00  INFO 17892 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:26:14.726-04:00  INFO 17892 --- [main] c.m.controller.UsuarioControllerTest     : Starting UsuarioControllerTest using Java 21.0.10 with PID 17892 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:26:14.727-04:00  INFO 17892 --- [main] c.m.controller.UsuarioControllerTest     : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:26:15.011-04:00  INFO 17892 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:26:15.121-04:00  INFO 17892 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:26:15.127-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:26:15.128-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T17:26:15.142-04:00  INFO 17892 --- [main] c.m.controller.UsuarioControllerTest     : Started UsuarioControllerTest in 0.435 seconds (process running for 11.705)
+2026-07-18T17:26:15.245-04:00  INFO 17892 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.controller.VentaControllerTest]: VentaControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:26:15.252-04:00  INFO 17892 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.controller.VentaControllerTest
+2026-07-18T17:26:15.255-04:00  INFO 17892 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:26:15.281-04:00  INFO 17892 --- [main] c.m.controller.VentaControllerTest       : Starting VentaControllerTest using Java 21.0.10 with PID 17892 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:26:15.282-04:00  INFO 17892 --- [main] c.m.controller.VentaControllerTest       : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:26:15.556-04:00  INFO 17892 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.minimarket.security.service.CustomUserDetailsService#0
+2026-07-18T17:26:15.647-04:00  INFO 17892 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-18T17:26:15.647-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-18T17:26:15.648-04:00  INFO 17892 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-18T17:26:15.653-04:00  INFO 17892 --- [main] c.m.controller.VentaControllerTest       : Started VentaControllerTest in 0.398 seconds (process running for 12.217)
+2026-07-18T17:26:15.775-04:00  INFO 17892 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.minimarket.MinimarketApplicationTests]: MinimarketApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-18T17:26:15.785-04:00  INFO 17892 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.minimarket.MinimarketApplication for test class com.minimarket.MinimarketApplicationTests
+2026-07-18T17:26:15.791-04:00  INFO 17892 --- [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-18T17:26:15.807-04:00  INFO 17892 --- [main] c.minimarket.MinimarketApplicationTests  : Starting MinimarketApplicationTests using Java 21.0.10 with PID 17892 (started by jorge in C:\Users\jorge\OneDrive\Desktop\Backend II\minimarket)
+2026-07-18T17:26:15.807-04:00  INFO 17892 --- [main] c.minimarket.MinimarketApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2026-07-18T17:26:16.307-04:00  INFO 17892 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-18T17:26:16.386-04:00  INFO 17892 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 8 JPA repository interfaces.
+2026-07-18T17:26:16.709-04:00  INFO 17892 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-18T17:26:16.821-04:00  INFO 17892 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-07-18T17:26:16.872-04:00  INFO 17892 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-18T17:26:17.080-04:00  INFO 17892 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-18T17:26:17.127-04:00  INFO 17892 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-18T17:26:17.520-04:00  INFO 17892 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-18T17:26:17.522-04:00  INFO 17892 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-18T17:26:17.620-04:00  INFO 17892 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-18T17:26:18.969-04:00  INFO 17892 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-18T17:26:19.105-04:00  INFO 17892 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T17:26:19.488-04:00  INFO 17892 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-07-18T17:26:19.689-04:00  WARN 17892 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-18T17:26:20.077-04:00  INFO 17892 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-07-18T17:26:20.169-04:00  INFO 17892 --- [main] c.minimarket.MinimarketApplicationTests  : Started MinimarketApplicationTests in 4.378 seconds (process running for 16.731)
+2026-07-18T17:26:20.759-04:00  INFO 17892 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-18T17:26:20.761-04:00  INFO 17892 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-18T17:26:20.954-04:00  INFO 17892 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

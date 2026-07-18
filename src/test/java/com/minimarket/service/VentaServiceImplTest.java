@@ -80,29 +80,23 @@ public class VentaServiceImplTest {
 
     @Test
     public void findAll_debeRetornarListaConTotalCalculado() {
-        // Arrange
         when(ventaRepository.findAll()).thenReturn(List.of(venta));
 
-        // Act
         List<VentaResponseDTO> respuesta = ventaService.findAll();
 
-        // Assert
         assertNotNull(respuesta);
         assertEquals(1, respuesta.size());
-        assertEquals(3000.0, respuesta.get(0).total()); // 2 * 1500.0
+        assertEquals(3000.0, respuesta.get(0).total());
         assertEquals("jperez", respuesta.get(0).usuarioUsername());
         assertEquals(1, respuesta.get(0).detalles().size());
     }
 
     @Test
     public void findById_cuandoExiste_debeRetornarVentaConTotal() {
-        // Arrange
         when(ventaRepository.findById(1L)).thenReturn(Optional.of(venta));
 
-        // Act
         VentaResponseDTO respuesta = ventaService.findById(1L);
 
-        // Assert
         assertNotNull(respuesta);
         assertEquals(3000.0, respuesta.total());
         assertEquals(1L, respuesta.usuarioId());
@@ -111,10 +105,8 @@ public class VentaServiceImplTest {
 
     @Test
     public void findById_cuandoNoExiste_debeLanzarExcepcion() {
-        // Arrange
         when(ventaRepository.findById(2L)).thenReturn(Optional.empty());
 
-        // Act & Assert
         assertThrows(RuntimeException.class, () -> ventaService.findById(2L));
 
         verify(ventaRepository).findById(2L);
@@ -129,8 +121,8 @@ public class VentaServiceImplTest {
         when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
         when(ventaRepository.save(any(Venta.class))).thenReturn(venta);
         when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(productoRepository.save(any(Producto.class))).thenReturn(producto);
         when(detalleVentaRepository.save(any(DetalleVenta.class))).thenReturn(detalleVenta);
-        when(ventaRepository.findById(venta.getId())).thenReturn(Optional.of(venta));
 
         // Act
         VentaResponseDTO respuesta = ventaService.crear(request);
@@ -139,17 +131,33 @@ public class VentaServiceImplTest {
         assertNotNull(respuesta);
         assertEquals(3000.0, respuesta.total());
         verify(detalleVentaRepository).save(any(DetalleVenta.class));
+        verify(productoRepository).save(any(Producto.class));
+    }
+
+    @Test
+    public void crear_conStockInsuficiente_debeLanzarExcepcion() {
+        // Arrange
+        DetalleVentaItemDTO item = new DetalleVentaItemDTO(1L, 100);
+        VentaRequestDTO request = new VentaRequestDTO(1L, List.of(item));
+
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
+        when(ventaRepository.save(any(Venta.class))).thenReturn(venta);
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+
+        // Act & Assert
+        assertThrows(RuntimeException.class, () -> ventaService.crear(request));
+
+        verify(detalleVentaRepository, never()).save(any(DetalleVenta.class));
+        verify(productoRepository, never()).save(any(Producto.class));
     }
 
     @Test
     public void crear_conUsuarioInexistente_debeLanzarExcepcion() {
-        // Arrange
         DetalleVentaItemDTO item = new DetalleVentaItemDTO(1L, 2);
         VentaRequestDTO request = new VentaRequestDTO(99L, List.of(item));
 
         when(usuarioRepository.findById(99L)).thenReturn(Optional.empty());
 
-        // Act & Assert
         assertThrows(RuntimeException.class, () -> ventaService.crear(request));
 
         verify(ventaRepository, never()).save(any(Venta.class));
@@ -157,17 +165,13 @@ public class VentaServiceImplTest {
 
     @Test
     public void findByUsuarioId_conUsuarioValido_debeRetornarVentas() {
-        // Arrange
         when(usuarioRepository.existsById(1L)).thenReturn(true);
         when(ventaRepository.findByUsuarioId(1L)).thenReturn(List.of(venta));
 
-        // Act
         List<VentaResponseDTO> respuesta = ventaService.findByUsuarioId(1L);
 
-        // Assert
         assertNotNull(respuesta);
         assertEquals(1, respuesta.size());
         assertEquals(3000.0, respuesta.get(0).total());
     }
-
 }
