@@ -161,6 +161,30 @@ public class ProductoServiceImplTest {
         verify(productoRepository).save(any(Producto.class));
     }
 
+    @Test
+    public void actualizar_cuandoProductoNoExiste_debeLanzarExcepcion(){
+        //Arrange
+        ProductoRequestDTO productoRequestDTO = new ProductoRequestDTO("Fideos", 1500.0, 1L);
+        when(productoRepository.findById(2L)).thenReturn(Optional.empty());
+
+        //Act & Assert
+        assertThrows(RuntimeException.class, () -> productoService.actualizar(2L, productoRequestDTO));
+        verify(productoRepository, never()).save(any(Producto.class));
+    }
+
+    @Test
+    public void actualizar_conCategoriaInexistente_debeLanzarExcepcion(){
+        //Arrange
+        ProductoRequestDTO productoRequestDTO = new ProductoRequestDTO("Arroz", 1500.0, 2L);
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(categoriaRepository.findById(2L)).thenReturn(Optional.empty());
+
+        //Act & Assert
+        assertThrows(RuntimeException.class, () -> productoService.actualizar(1L, productoRequestDTO));
+        verify(productoRepository, never()).save(any(Producto.class));
+
+    }
+
 
 
 
