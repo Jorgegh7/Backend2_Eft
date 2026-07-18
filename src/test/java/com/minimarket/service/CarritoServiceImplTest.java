@@ -10,6 +10,7 @@ import com.minimarket.repository.CarritoRepository;
 import com.minimarket.repository.ProductoRepository;
 import com.minimarket.repository.UsuarioRepository;
 import com.minimarket.service.impl.CarritoServiceImpl;
+import com.minimarket.service.impl.ProductoServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -85,6 +86,58 @@ public class CarritoServiceImplTest {
         assertEquals("jperez", respuesta.get(0).usuarioUsername());
     }
 
+    @Test
+    public void findById_cuandoExiste_debeRetornarCarrito(){
+        //Arrange
+        when(carritoRepository.findById(1L)).thenReturn(Optional.of(carrito));
+
+        //Act
+        CarritoResponseDTO respuesta = carritoService.findById(1L);
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals(1, respuesta.id());
+        assertEquals(3, respuesta.cantidad());
+        assertEquals(1, respuesta.productoId());
+        assertEquals("Arroz", respuesta.productoNombre());
+        assertEquals(1, respuesta.usuarioId());
+        assertEquals("jperez", respuesta.usuarioUsername());
+    }
+
+    @Test
+    public void findById_cuandoNoExiste_debeLanzarExcepcion(){
+        //Arrange
+        when(carritoRepository.findById(2L)).thenReturn(Optional.empty());
+
+        //Act & Assert
+        assertThrows(RuntimeException.class, () -> carritoService.findById(2L));
+
+        verify(carritoRepository).findById(2L);
+    }
+
+    @Test
+    public void agregarProducto_conDatosValidos_debeCrearCarrito(){
+        //Arrange
+        CarritoRequestDTO carritoRequestDTO = new CarritoRequestDTO(1L, 1L, 3);
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(producto));
+        when(carritoRepository.save(any(Carrito.class))).thenReturn(carrito);
+
+        //Act
+        CarritoResponseDTO respuesta = carritoService.agregarProducto(carritoRequestDTO);
+
+        //Assert
+        assertNotNull(respuesta);
+        assertEquals(3, respuesta.cantidad());
+        assertEquals(1, respuesta.productoId());
+        assertEquals("Arroz", respuesta.productoNombre());
+        assertEquals(1, respuesta.usuarioId());
+        assertEquals("jperez", respuesta.usuarioUsername());
+    }
+    @Test
+    public void actualizar_conDatosValidos_debeActualizarCarrito(){
+        
+    }
 
 
 
@@ -92,7 +145,7 @@ public class CarritoServiceImplTest {
 
 
 
-    
+
 
 
 
